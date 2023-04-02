@@ -1,8 +1,11 @@
-function handleHashChange() {
+async function handleHashChange() {
     var hash = location.hash.slice(1);
+    const route = hash === "/" ? "main" : hash;
     console.log('Hash has changed:' + hash);
     document.querySelector('a[active]').removeAttribute('active');
-    document.querySelector(`.header .right a[href='#${hash}']`).setAttribute('active','');
+    document.querySelector(`.header .right a[href='#${hash}']`).setAttribute('active', '');
+    const data = await fetch(`/assets/routes/${route}.html`).then(response => response.text());
+    console.log(data);
 }
 
 window.addEventListener('load', function () {
