@@ -1,9 +1,14 @@
 async function handleHashChange() {
     var hash = location.hash.slice(1);
     const route = hash === "/" ? "main" : hash;
-    console.log('Hash has changed:' + hash);
+    const headerLink = document.querySelector(`.header .right a[href='#${hash}']`);
+    if (!headerLink) {
+        // 如果 header 中的链接不存在，则跳转到 404 页面
+        location.hash = '#/404';
+        return;
+    }
     document.querySelector('a[active]').removeAttribute('active');
-    document.querySelector(`.header .right a[href='#${hash}']`).setAttribute('active', '');
+    headerLink.setAttribute('active', '');
     const data = await fetch(`/assets/routes/${route}.html`).then(response => response.text());
     console.log(data);
 }
