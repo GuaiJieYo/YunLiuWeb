@@ -1,23 +1,24 @@
+// 定义一个处理 hash 变化的函数
 async function handleHashChange() {
     var hash = location.hash.slice(1);
-    const route = hash === "/" ? "main" : hash;
+    var route = hash === "/" ? "main" : hash.slice(1);
     const headerLink = document.querySelector(`.header .right a[href='#${hash}']`);
     if (!headerLink) {
-        // 如果 header 中的链接不存在，则跳转到 404 页面
         location.hash = '#/404';
-        return;
+    } else {
+        document.querySelector('a[active]').removeAttribute('active');
+        headerLink.setAttribute('active', '');
     }
-    document.querySelector('a[active]').removeAttribute('active');
-    headerLink.setAttribute('active', '');
-    const data = await fetch(`/assets/routes/${route}.html`).then(response => response.text());
-    console.log(data);
+    let routeData = await fetch(`/assets/routes/${route}.html`).then(response => response.text());
+    console.log(routeData)
 }
 
-window.addEventListener('load', function () {
-    if (!location.hash) {
+window.addEventListener('DOMContentLoaded', function () {
+    if (!location.hash || location.hash === '#') {
         location.hash = '#/';
     }
     window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
 });
 
 // 请不要删除这段LOG
