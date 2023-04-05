@@ -17,6 +17,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-warn:before {
+    content: "\e90a";
+}
+
 .icon-caret-left:before {
     content: "\e908";
 }

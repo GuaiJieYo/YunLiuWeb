@@ -8,10 +8,12 @@
 
 ## 注意事项
 1. 请保留原作者信息
+2. 网页中路由如果不存在则会跳转到主页面~~(改了很多次代码都不能实现404页的跳转)~~
 
 ## 引用列表
-1. [FontAwesome](https://fontawesome.com/)(引用了少部分字体)
-2. [animate.css](https://animate.style/)
+1. [FontAwesome](https://github.com/FortAwesome/Font-Awesome)(引用了少部分PRO图标)
+2. [animate.css](https://github.com/animate-css/animate.css/)
+3. [iziToast](https://github.com/marcelodolza/iziToast)
 
 ## 创意来源
 1. 404页(404.html)源自：[https://codepen.io/xontab/pen/JrVaYR](https://codepen.io/xontab/pen/JrVaYR)
