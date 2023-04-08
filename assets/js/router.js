@@ -10,9 +10,14 @@ const Routes = {
 
 // 处理路由
 async function handleHashChange() {
-    const hash = location.hash.slice(1);
-    const routeUrl = Routes[hash] || Routes['/404'];
-    var htmlContent = await getHtmlContent(routeUrl) || null;
+    let hash = location.hash.slice(1);
+    let routeUrl = Routes[hash] || Routes['/404'];
+    let headerLink = document.querySelector(`.header .right a[href='#${hash}']`);
+    if (headerLink) {
+        document.querySelector('a[active]').removeAttribute('active');
+        headerLink.setAttribute('active', '');
+    }
+    let htmlContent = await getHtmlContent(routeUrl) || null;
     document.querySelector('main').innerHTML = htmlContent;
 }
 

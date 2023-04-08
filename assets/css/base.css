@@ -77,7 +77,6 @@ header .header .right a:after {
     bottom: -3px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
     transition: all 0.3s;
 }
 
