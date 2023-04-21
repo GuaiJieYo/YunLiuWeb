@@ -10,7 +10,6 @@
 1. 请保留原作者信息
 2. 网页路径在assets/js/router.js文件里改
 3. 已压缩404的所有文件,如需修改请自行解压
-4. 网页子页面都不需要引入js(在index里会自动引入)
 
 ## 引用列表
 1. [FontAwesome](https://github.com/FortAwesome/Font-Awesome)(引用了少部分PRO图标)
