@@ -12,7 +12,6 @@
 
 a[href] {
     text-decoration: none;
-    color: black;
 }
 
 header {
@@ -22,6 +21,10 @@ header {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
         0 2px 10px 0 rgba(0, 0, 0, 0.12);
     transition: all .3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
 }
 
 header .header {
@@ -35,6 +38,7 @@ header .header {
 header .header .left {
     display: flex;
     align-items: center;
+    color: #fff;
 }
 
 header .header .left p {
@@ -51,6 +55,7 @@ header .header .right a i {
 }
 
 header .header .right a {
+    color: #fff;
     margin: 0 10px;
     font-size: 1.6rem;
     vertical-align: middle;
@@ -60,7 +65,7 @@ header .header .right a {
 header .header .right a[active]:after {
     display: block;
     width: 90%;
-    background-color: black;
+    background-color: #fff;
     height: 2px;
     position: absolute;
     bottom: -3px;
@@ -84,5 +89,5 @@ header .header .right a:hover:after {
     display: block;
     content: '';
     width: 90%;
-    background-color: black;
+    background-color: #fff;
 }
