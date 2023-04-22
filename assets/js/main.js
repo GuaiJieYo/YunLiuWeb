@@ -38,16 +38,16 @@ nextBtn.addEventListener('click', function () {
 });
 
 // 自动播放定时器
-var timer = setInterval(autoPlay, 3000);
+var carouseltimer = setInterval(autoPlay, 3000);
 
 // 绑定上一张和下一张按钮的鼠标移入移出事件
 carousel.addEventListener('mouseover', function (event) {
     if (event.target.matches('.prev, .next')) {
-        clearInterval(timer);
+        clearInterval(carouseltimer);
     }
 });
 carousel.addEventListener('mouseout', function (event) {
     if (event.target.matches('.prev, .next')) {
-        timer = setInterval(autoPlay, 3000);
+        carouseltimer = setInterval(autoPlay, 3000);
     }
 });

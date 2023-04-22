@@ -17,16 +17,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-warn:before {
-    content: "\e90a";
-}
-
-.icon-caret-left:before {
+.icon-minecraft:before {
     content: "\e908";
 }
 
-.icon-caret-right:before {
-    content: "\e909";
+.icon-warn:before {
+    content: "\e90a";
 }
 
 .icon-github:before {
