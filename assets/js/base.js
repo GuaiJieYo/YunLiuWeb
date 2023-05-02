@@ -1,5 +1,9 @@
 // 监听页面加载完成事件
 window.addEventListener('load', function () {
+    hideLoadingBox();
+});
+
+function hideLoadingBox() {
     // 获取loading元素
     const loadingbox = document.querySelector('#loading');
     // 设置初始透明度为1
@@ -17,8 +21,7 @@ window.addEventListener('load', function () {
         // 透明度每次减小原来的30%
         opacity -= opacity * 0.3;
     }, 50);
-});
-
+}
 
 // 请不要删除这段LOG
 console.log(

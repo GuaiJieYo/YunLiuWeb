@@ -67,5 +67,7 @@ window.addEventListener("DOMContentLoaded", () => {
         handleHashChange();
     }
     // 监听hashchange事件
-    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("hashchange", () => {
+        handleHashChange();
+    });
 });
