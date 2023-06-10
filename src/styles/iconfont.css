@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'YunLiuCraft-ICON';
-  src: url('/assets/fonts/YunLiuCraft-ICON.woff') format('woff');
+  src: url('../fonts/YunLiuCraft-ICON.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;

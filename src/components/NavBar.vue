@@ -1,62 +1,36 @@
-@font-face {
-    font-family: 'jyhphy';
-    src: url('/assets/fonts/jyhphy.woff2') format('woff2');
-}
+<template>
+    <header>
+        <div class="header">
+            <a href="#/" class="left">
+                <i class="iconfont icon-cloud"></i>
+                <p>YunLiuCraft</p>
+            </a>
+            <div class="right">
+                <a active href="#/">
+                    <i class="iconfont icon-index"></i>首页
+                </a>
+                <a href="#/join">
+                    <i class="iconfont icon-plus"></i>加入
+                </a>
+                <a href="#/rule">
+                    <i class="iconfont icon-rule"></i>规则
+                </a>
+                <a href="#/help">
+                    <i class="iconfont icon-help"></i>帮助
+                </a>
+                <a href="#/feedback">
+                    <i class="iconfont icon-feedback"></i>反馈
+                </a>
+            </div>
+        </div>
+    </header>
+</template>
 
-* {
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-    font-family: 'jyhphy', 'Microsoft YaHei';
-}
+<script setup>
 
-a[href] {
-    text-decoration: none;
-}
+</script>
 
-/* 加载动画 */
-#loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 3;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#loading .creeper {
-    width: 128px;
-    height: 128px;
-    border-radius: 10px;
-    image-rendering: pixelated;
-    animation: Scale 1s ease-in-out infinite;
-    margin: 30px;
-}
-
-#loading h1 {
-    margin: 30px;
-    font-size: 2rem;
-}
-
-@keyframes Scale {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.3);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* 导航栏 */
+<style scoped>
 header {
     width: 100vw;
     height: 80px;
@@ -81,7 +55,7 @@ header .header {
 header .header .left {
     display: flex;
     align-items: center;
-    color: #fff;
+    color: #000;
 }
 
 header .header .left p {
@@ -98,7 +72,7 @@ header .header .right a i {
 }
 
 header .header .right a {
-    color: #fff;
+    color: #000;
     margin: 0 10px;
     font-size: 1.6rem;
     vertical-align: middle;
@@ -108,7 +82,7 @@ header .header .right a {
 header .header .right a[active]:after {
     display: block;
     width: 90%;
-    background-color: #fff;
+    background-color: #000;
     height: 2px;
     position: absolute;
     bottom: -3px;
@@ -132,5 +106,6 @@ header .header .right a:hover:after {
     display: block;
     content: '';
     width: 90%;
-    background-color: #fff;
+    background-color: #000;
 }
+</style>

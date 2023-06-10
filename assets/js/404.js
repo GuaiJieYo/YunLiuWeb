@@ -1,1 +1,0 @@
-var percentageElement=document.getElementById("percentage"),percentage=0;function process(){(percentage+=parseInt(30*Math.random()))>100&&(percentage=100),percentageElement.innerText=percentage,processInterval()}function processInterval(){setTimeout(process,500*Math.random()+500)}processInterval();
