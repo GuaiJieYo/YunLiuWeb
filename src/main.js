@@ -1,14 +1,12 @@
 import { createApp } from 'vue'
 import router from './scripts/router'
-import './styles/base.css'
+import './styles/base.less'
 import './styles/iconfont.css'
 import App from './App.vue'
 
 const app = createApp(App)
 app.use(router) // 使用 Vue Router
 app.mount('#app')
-
-// 在#app挂载之前引入脚本
 
 window.$WebVersion = 0.1
 

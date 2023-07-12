@@ -45,7 +45,7 @@ const routes = [
     }
   },
   {
-    path: '/404',
+    path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: Home,
     meta: {
@@ -62,9 +62,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
-    if (to.meta.title) {
-      window.document.title = `${to.meta.title} - YunLiuCraft`;
-    }
+    window.document.title = `${to.meta.title} - YunLiuCraft`;
   } else {
     window.document.title = 'YunLiuCraft - 新征程！'
   }
