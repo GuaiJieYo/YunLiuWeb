@@ -11,14 +11,8 @@
         <div class="next" @click="NextSlide">&#10095;</div>
         <div class="start" @click="Start">&#8891;</div>
     </div>
-    <div class="features">
-        <div class="box">
-            <i class="iconfont icon-love"></i>
-            <p>Made With Love</p>
-        </div>
-    </div>
 </template>
-  
+
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
@@ -31,11 +25,11 @@ let intervalId
 
 onMounted(() => {
     startAutoPlay()
-});
+})
 
 onUnmounted(() => {
     stopAutoPlay()
-});
+})
 
 function PrevSlide() {
     stopAutoPlay(); // 停止自动轮播
@@ -72,7 +66,7 @@ function Start(e) {
     window.scrollTo({
         top: ElParent.offsetTop + ElParent.offsetHeight,
         behavior: 'smooth'
-    })
+    }) // 移动到第一个页面
 }
 </script>
 
@@ -84,9 +78,10 @@ function Start(e) {
 
 .slide {
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    // overflow: hidden;
+    overflow: hidden;
+    background: @slide-bg-color;
 
     .text {
         z-index: 1;
@@ -110,7 +105,7 @@ function Start(e) {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         object-fit: cover;
         opacity: 0;
@@ -177,11 +172,5 @@ function Start(e) {
     50% {
         transform: translateY(-5px);
     }
-}
-
-.features {
-    // width: 100vw;
-    display: flex;
-    justify-content: center;
 }
 </style>

@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-// 导入组件
-import Home from '../components/main.vue'
+// 导入组件(动态导入)
+const Home = () => import('../views/main.vue')
 
 // 路由列表
 const routes = [
@@ -61,11 +61,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.title) {
-    window.document.title = `${to.meta.title} - YunLiuCraft`;
-  } else {
-    window.document.title = 'YunLiuCraft - 新征程！'
-  }
+  window.document.title = `${to.meta.title} - YunLiuCraft`
   next()
 })
 

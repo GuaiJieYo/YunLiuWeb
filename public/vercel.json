@@ -1,0 +1,23 @@
+{
+    "routes": [
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/(.*)",
+            "status": 404,
+            "dest": "/"
+        }
+    ],
+    "headers": [
+        {
+            "source": "(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, s-maxage=86400, max-age=86400"
+                }
+            ]
+        }
+    ]
+}
