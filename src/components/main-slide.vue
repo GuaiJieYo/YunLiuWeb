@@ -17,9 +17,11 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const activeIndex = ref(0)
+// 图片在这个项目的public文件夹的imgs文件夹里
 const images = [
-    'https://cdn.ucany.net/acg-img/623b52c1bdf8f.webp',
-    'https://cdn.ucany.net/acg-img/623b52b8754ad.webp'
+    '/imgs/1.png',
+    '/imgs/2.jpg',
+    '/imgs/3.png'
 ]
 let intervalId
 

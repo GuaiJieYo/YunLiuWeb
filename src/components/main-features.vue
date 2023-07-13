@@ -3,31 +3,11 @@
         <h1>我们的特色</h1>
         <p class="smalltext">加入YunLiuCraft服务器,你将会获得与其他服务器截然不同的体验</p>
         <ul class="box">
-            <li v-for="(item, index) in FeatureList">
+            <li class="wow flipInX" v-for="(item, index) in FeatureList">
                 <i class="iconfont" :class="item.icon"></i>
                 <h2 class="title">{{ item.title }}</h2>
                 <p>{{ item.text }}</p>
             </li>
-            <!-- <li>
-                <i class="iconfont icon-fair"></i>
-                <h2 class="title">Title</h2>
-                <p>Made With Love</p>
-            </li>
-            <li>
-                <i class="iconfont icon-world"></i>
-                <h2 class="title">Title</h2>
-                <p>Made With Love</p>
-            </li>
-            <li>
-                <i class="iconfont icon-love"></i>
-                <h2 class="title">Title</h2>
-                <p>Made With Love</p>
-            </li>
-            <li>
-                <i class="iconfont icon-love"></i>
-                <h2 class="title">Title</h2>
-                <p>Made With Love</p>
-            </li> -->
         </ul>
     </div>
 </template>
@@ -76,7 +56,6 @@ const FeatureList = [
         align-items: center;
         justify-content: center;
         list-style: none;
-        // flex-wrap: wrap;
 
         li {
             padding: 40px;
@@ -125,4 +104,5 @@ const FeatureList = [
             }
         }
     }
-}</style>
+}
+</style>

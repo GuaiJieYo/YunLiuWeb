@@ -6,7 +6,7 @@ import App from './App.vue'
 
 const app = createApp(App)
 app.use(router) // 使用 Vue Router
-app.mount('#app')
+app.mount('#app') // 挂载#app
 
 window.$WebVersion = 0.1
 
