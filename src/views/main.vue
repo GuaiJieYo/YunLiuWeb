@@ -1,10 +1,6 @@
 <template>
     <Slide />
     <Features />
-    
-    <Features />
-    
-    <Features />
 
     <BackToTop elment=".slide" />
 </template>
