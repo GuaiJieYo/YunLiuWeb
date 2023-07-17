@@ -11,11 +11,11 @@
 <script setup>
 import Loading from './components/Loading.vue'
 import NavBar from './components/NavBar.vue'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 const isloading = ref(true)
 
-onMounted(() => {
+window.onload = () => {
   isloading.value = false
-})
+}
 </script>
