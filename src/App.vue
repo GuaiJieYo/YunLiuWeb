@@ -1,4 +1,5 @@
 <template>
+  <Loading v-if="isloading" />
   <nav>
     <NavBar />
   </nav>
@@ -8,5 +9,13 @@
 </template>
 
 <script setup>
-  import NavBar from './components/NavBar.vue'
+import Loading from './components/Loading.vue'
+import NavBar from './components/NavBar.vue'
+import { ref, onMounted } from 'vue'
+
+const isloading = ref(true)
+
+onMounted(() => {
+  isloading.value = false
+})
 </script>

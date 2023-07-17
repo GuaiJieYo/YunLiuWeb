@@ -1,6 +1,6 @@
 <template>
     <div title="回到顶部" @click="Back2Top" class="back2top">
-        <img src="/imgs/back2top.png">
+        <img src="/imgs/back2top.webp">
     </div>
 </template>
 
@@ -42,7 +42,7 @@ onUnmounted(() => {
     position: fixed;
     bottom: 0;
     right: -150px;
-    z-index: 99999;
+    z-index: 999;
     opacity: .4;
     transition: all .3s;
     cursor: pointer;
