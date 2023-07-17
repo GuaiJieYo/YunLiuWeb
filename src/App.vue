@@ -1,5 +1,7 @@
 <template>
-  <Loading v-if="isloading" />
+  <transition name="FadeOut">
+    <Loading v-if="isloading" />
+  </transition>
   <nav>
     <NavBar />
   </nav>

@@ -1,3 +1,8 @@
+/*
+*   全局样式库
+*   By: GuaiJie
+*/
+
 * {
     margin: 0;
     padding: 0;
@@ -16,4 +21,15 @@ main {
 
 a[href] {
     text-decoration: none;
+}
+
+// 渐出动画 使用vue原生<transition>
+.FadeOut-enter-active,
+.FadeOut-leave-active {
+  transition: opacity .5s;
+}
+
+.FadeOut-enter,
+.FadeOut-leave-to {
+  opacity: 0;
 }
