@@ -1,8 +1,8 @@
 <template>
     <Slide />
     <Features />
-
-    <BackToTop elment=".slide" />
+    
+    <BackToTop to=".slide" />
 </template>
   
 <script setup>

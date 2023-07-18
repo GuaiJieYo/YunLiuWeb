@@ -17,45 +17,62 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-qq:before {
+  content: "\e90e";
+}
+
 .icon-minecraft:before {
   content: "\e908";
 }
+
 .icon-warn:before {
   content: "\e90a";
 }
+
 .icon-github:before {
   content: "\e900";
 }
+
 .icon-bilibili:before {
   content: "\e901";
 }
+
 .icon-feedback:before {
   content: "\e902";
 }
+
 .icon-cloud:before {
   content: "\e903";
 }
+
 .icon-help:before {
   content: "\e904";
 }
+
 .icon-rule:before {
   content: "\e905";
 }
+
 .icon-plus:before {
   content: "\e906";
 }
+
 .icon-index:before {
   content: "\e907";
 }
+
 .icon-love:before {
   content: "\e909";
 }
+
 .icon-world:before {
   content: "\e90c";
 }
+
 .icon-admins:before {
   content: "\e90d";
 }
+
 .icon-fair:before {
   content: "\e90b";
 }

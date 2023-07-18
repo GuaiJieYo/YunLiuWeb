@@ -8,7 +8,7 @@
 import { onMounted, onUnmounted } from 'vue'
 
 // 设置滚动条滚动到最低的高度的元素
-const props = defineProps(['elment'])
+const props = defineProps(['to'])
 
 function Back2Top() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -17,7 +17,7 @@ function Back2Top() {
 
 function ShowButton() {
     const Back2TopEl = document.querySelector('.back2top')
-    const El = document.querySelector(props.elment)
+    const El = document.querySelector(props.to)
     const ScrollTop = window.pageYOffset || document.body.scrollTop
 
     if (ScrollTop > (El.offsetTop + El.offsetHeight)/2) {
