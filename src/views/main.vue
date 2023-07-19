@@ -2,7 +2,7 @@
     <Slide />
     <Features />
     
-    <BackToTop to=".slide" />
+    <BackToTop show=".slide" />
 </template>
   
 <script setup>

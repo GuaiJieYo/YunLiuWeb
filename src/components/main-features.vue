@@ -3,10 +3,53 @@
         <h1>我们的特色</h1>
         <p class="smalltext">加入YunLiuCraft服务器,你将会获得与其他服务器截然不同的体验</p>
         <ul class="box">
-            <li class="wow flipInX" v-for="(item, index) in FeatureList">
+            <li v-for="(item, index) in FeatureList" :key="index">
                 <i class="iconfont" :class="item.icon"></i>
                 <h2 class="title">{{ item.title }}</h2>
                 <p>{{ item.text }}</p>
+            </li>
+        </ul>
+    </div>
+    <div class="welcome">
+        <div class="left">
+            <h1>YunLiuCraft 欢迎您</h1>
+            <p>
+                这是一个温馨和谐的服务器，提供了稳定流畅的体验，自从2022开服以来我们努力创建一个环境良好更公平公正的游戏氛围，和玩家们一起度过了很多愉快的时光,在这里的日子将会是你值得回忆的美好。
+                我们保证不做影响平衡、破坏公平的行为。服务器暂时不开放白名单，欢迎玩家提出意见或者举报违规行为，请大家自觉遵守游戏规则。
+            </p>
+        </div>
+        <div class="right">
+            <img src="/imgs/1.webp" alt="Welcome">
+        </div>
+    </div>
+    <div class="features2">
+        <h1>多种玩法任你选择</h1>
+        <ul>
+            <li>
+                <h2>机械动力</h2>
+                <img src="/imgs/CreateMod.webp" alt="机械动力">
+                <p>
+                    你可以使用这个模组来建造复杂的自动化机器,例如发电机、输送带和工业设备等.<br>
+                    它还引入了新的能源类型,如压缩空气和蒸汽.<br>
+                    模组为玩家提供了更多深入的技术和机械化玩法,让游戏变得更加有趣和挑战性.
+                </p>
+            </li>
+            <li>
+                <h2>红石</h2>
+                <img src="/imgs/Redstone.webp" alt="红石">
+                <p>
+                    通过红石线、粉和元件连接,可以创造各种电路和机械装置,如自动门、陷阱、电梯、闹钟、自动农场等.<br>
+                    掌握红石的运算和传输规则,你可以发挥想象力,创造出丰富多样的装置,让你的世界更有趣.
+                </p>
+            </li>
+            <li>
+                <h2>匠神(匠魂3)</h2>
+                <img src="/imgs/HephaestusMod.webp" alt="匠神">
+                <p>
+                    在此模组中: <br>
+                    你可以自由地探索出现在天空或是海上亦或是熔岩湖上的岛屿,还能在挖矿或探索时遇到各式的晶洞;<br>
+                    你可以自由地锻造工具,不再被那单一的工具/武器顶部和脆弱的木柄所束缚,只要你有创意,理论上有上千乃至上万种搭配.
+                </p>
             </li>
         </ul>
     </div>
@@ -101,6 +144,95 @@ const FeatureList = [
                 &::after {
                     opacity: 1;
                 }
+            }
+        }
+    }
+}
+
+.welcome {
+    padding: 50px 200px;
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+        margin: 0 20px;
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+
+        p {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            color: #6f6f6f;
+        }
+    }
+
+    .right {
+        margin: 0 20px;
+        border-radius: 10px;
+
+        img {
+            object-fit: cover;
+            width: 600px;
+        }
+    }
+}
+
+.features2 {
+    padding: 80px;
+    text-align: center;
+
+    ul {
+        margin-top: 20px;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            position: relative;
+            cursor: pointer;
+
+            h2 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 3rem;
+                white-space: nowrap;
+                color: #f9f9f9;
+                z-index: 1;
+                transition: opacity .3s;
+            }
+
+            p {
+                padding: 10px;
+                text-align: start;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #f9f9f9;
+                font-size: 1.2rem;
+                opacity: 0;
+                transition: opacity .3s;
+            }
+
+            &:hover {
+                h2 {
+                    opacity: 0;
+                }
+
+                p {
+                    opacity: 1;
+                }
+            }
+
+            img {
+                width: 370px;
+                object-fit: cover;
+                filter: brightness(.3);
+                border-radius: 10px;
             }
         }
     }
