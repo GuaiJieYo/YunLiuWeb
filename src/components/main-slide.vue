@@ -9,7 +9,7 @@
             <img v-for="(image, index) in images" :src="image" :class="{ 'active': index === activeIndex }">
         </div>
         <div class="next" @click="NextSlide">&#10095;</div>
-        <div class="start" @click="Start">&#8891;</div>
+        <div class="start" @click="Start">&or;</div>
     </div>
 </template>
 
@@ -149,7 +149,7 @@ function Start(e) {
 
     .start {
         position: absolute;
-        left: 50%;
+        left: 48%;
         bottom: 0;
         font-size: 4rem;
         cursor: pointer;
@@ -162,6 +162,7 @@ function Start(e) {
             color: @slide-button-hover-color;
         }
     }
+
 }
 
 @keyframes StartBtn {
