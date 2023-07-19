@@ -11,7 +11,7 @@
             </div>
             <div class="copy">
                 Copyright &copy; 2022 - {{ new Date().getFullYear() }} YunLiuCraft<br>
-                网页代码由 <a href="https://www.guaijie.top">GuaiJie</a> 授权编写,YunLiuCraft 管理组维护
+                网页代码由 <a href="https://www.guaijie.top">GuaiJie</a> 编写(开源),YunLiuCraft 管理组维护
             </div>
         </div>
         <div class="right">
