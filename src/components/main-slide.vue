@@ -149,9 +149,10 @@ function Start(e) {
 
     .start {
         position: absolute;
-        left: 48%;
+        left: 50%;
         bottom: 0;
         font-size: 4rem;
+        transform: translateX(-50%);
         cursor: pointer;
         z-index: 1;
         animation: StartBtn 1.3s infinite ease;
@@ -166,14 +167,13 @@ function Start(e) {
 }
 
 @keyframes StartBtn {
-
     0%,
     100% {
-        transform: translateY(0);
+        transform: translate(-50%,0);
     }
 
     50% {
-        transform: translateY(-5px);
+        transform: translate(-50%,-5px);
     }
 }
 </style>
