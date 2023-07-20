@@ -1,6 +1,7 @@
 <template>
     <div class="team">
         <h1>我们的团队</h1>
+        <p>皮肤来自于Mojang API</p>
         <div class="scroll">
             <ul id="team">
                 <li v-for="(item, index) in TeamList" :key="index">
@@ -61,12 +62,12 @@ const TeamList = [
         skin: '/imgs/skins/Qingfeng_Albus.webp'
     },
     {
-        id: 'jieke',
+        id: 'bilibili_jieke',
         info: '[生存组]',
         skin: '/imgs/skins/Steve.webp'
     },
     {
-        id: 'shen',
+        id: 'awashen',
         info: '[生存组]',
         skin: '/imgs/skins/Steve.webp'
     }
