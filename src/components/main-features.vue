@@ -1,15 +1,4 @@
 <template>
-    <div class="features">
-        <h1>我们的特色</h1>
-        <p class="smalltext">加入YunLiuCraft服务器,你将会获得与其他服务器截然不同的体验</p>
-        <ul class="box">
-            <li v-for="(item, index) in FeatureList" :key="index">
-                <i class="iconfont" :class="item.icon"></i>
-                <h2 class="title">{{ item.title }}</h2>
-                <p>{{ item.text }}</p>
-            </li>
-        </ul>
-    </div>
     <div class="welcome">
         <div class="left">
             <h1>YunLiuCraft 欢迎您</h1>
@@ -22,13 +11,24 @@
             <img src="/imgs/1.webp" alt="Welcome">
         </div>
     </div>
+    <div class="features">
+        <h1>我们的特色</h1>
+        <p class="smalltext">加入YunLiuCraft服务器,你将会获得与其他服务器截然不同的体验</p>
+        <ul class="box">
+            <li v-for="(item, index) in FeatureList" :key="index">
+                <i class="iconfont" :class="item.icon"></i>
+                <h2 class="title">{{ item.title }}</h2>
+                <p>{{ item.text }}</p>
+            </li>
+        </ul>
+    </div>
     <div class="features2">
         <h1>多种玩法任你选择</h1>
         <ul>
-            <li v-for="(item,index) in FeatureList2" :key="index">
-                <h2>{{item.title}}</h2>
+            <li v-for="(item, index) in FeatureList2" :key="index">
+                <h2>{{ item.title }}</h2>
                 <img :src="item.img" :alt="item.title">
-                <p>{{item.info}}</p>
+                <p>{{ item.info }}</p>
             </li>
         </ul>
     </div>
@@ -66,7 +66,7 @@ const FeatureList2 = [
     {
         title: '红石',
         img: '/imgs/Redstone.webp',
-        info: '通过红石线、粉和元件连接,可以创造各种电路和机械装置,如自动门、陷阱、电梯、闹钟、自动农场等.\n掌握红石的运算和传输规则,你可以发挥想象力,创造出丰富多样的装置,让你的世界更有趣.'
+        info: '通过红石线与元件连接,可以创造各种电路和机械装置,如自动门、陷阱、电梯、闹钟、自动农场等.\n掌握红石的运算和传输规则,你可以发挥想象力,创造出丰富多样的装置,让你的世界更有趣.'
     },
     {
         title: '匠神(匠魂3)',
@@ -76,6 +76,37 @@ const FeatureList2 = [
 ]
 </script>
 <style lang="less" scoped>
+.welcome {
+    padding: 80px 200px;
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+        margin: 0 20px;
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+
+        p {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            color: #6f6f6f;
+        }
+    }
+
+    .right {
+        margin: 0 20px;
+
+        img {
+            object-fit: cover;
+            border-radius: 10px;
+            width: 600px;
+        }
+    }
+}
+
 .features {
     padding: 50px 0;
     text-align: center;
@@ -146,37 +177,6 @@ const FeatureList2 = [
     }
 }
 
-.welcome {
-    padding: 50px 200px;
-    display: flex;
-    justify-content: space-between;
-
-    .left {
-        margin: 0 20px;
-
-        h1 {
-            color: #2c3e50;
-            font-size: 2rem;
-        }
-
-        p {
-            margin-top: 30px;
-            font-size: 1.1rem;
-            color: #6f6f6f;
-        }
-    }
-
-    .right {
-        margin: 0 20px;
-        border-radius: 10px;
-
-        img {
-            object-fit: cover;
-            width: 600px;
-        }
-    }
-}
-
 .features2 {
     padding: 80px;
     text-align: center;
@@ -189,7 +189,6 @@ const FeatureList2 = [
 
         li {
             position: relative;
-            cursor: pointer;
 
             h2 {
                 position: absolute;
