@@ -48,7 +48,7 @@ const TeamList = [
     },
     {
         id: 'Q1ianQiu',
-        info: '[RPG组]',
+        info: '策划',
         skin: '/imgs/skins/Q1ianQiu.webp'
     },
     {
@@ -64,12 +64,12 @@ const TeamList = [
     {
         id: 'bilibili_jieke',
         info: '[生存组]',
-        skin: '/imgs/skins/Steve.webp'
+        skin: '/imgs/skins/Steve.webp' //因为没有渲染出来jieke的皮肤 所以用Steve的皮肤先代替着
     },
     {
         id: 'awashen',
         info: '[生存组]',
-        skin: '/imgs/skins/Steve.webp'
+        skin: '/imgs/skins/awashen.webp'
     }
 ]
 
