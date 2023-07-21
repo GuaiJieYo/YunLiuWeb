@@ -64,7 +64,7 @@ const TeamList = [
     {
         id: 'bilibili_jieke',
         info: '[生存组]',
-        skin: '/imgs/skins/Steve.webp' //因为没有渲染出来jieke的皮肤 所以用Steve的皮肤先代替着
+        skin: '/imgs/skins/Steve.webp' //因为没有渲染出来jieke的皮肤 所以用Steve了XD
     },
     {
         id: 'awashen',
@@ -86,7 +86,7 @@ const TeamList = [
             margin-top: 20px;
             list-style: none;
             display: flex;
-            animation: ScrollToEnd 25s infinite linear alternate;
+            animation: ScrollToEnd 20s infinite linear alternate;
         }
     }
 }
