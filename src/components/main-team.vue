@@ -80,6 +80,10 @@ const TeamList = [
     padding: 60px;
     text-align: center;
 
+    h1 {
+        font-size: 2rem;
+    }
+
     .scroll {
         overflow: hidden;
         ul {

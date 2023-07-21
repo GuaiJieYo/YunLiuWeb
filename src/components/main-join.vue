@@ -1,0 +1,48 @@
+<template>
+    <div class="join">
+        <h1>加入我们</h1>
+        <p>我们是一个和谐且自由的公益Minecraft服务器,</p>
+        <p>马上开始在这里的旅程吧!</p>
+        <small>在游玩之前您需要先阅读我们的<a href="#/rule">隐私协议</a>和<a href="#/rule">玩家条约</a></small>
+        <a href="https://dwz.win/a5me" class="join-btn">
+            <i class="iconfont icon-qq"></i>
+            加入群聊
+        </a>
+    </div>
+</template>
+<style lang="less" scoped>
+.join {
+    margin: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.3rem;
+    }
+
+    a {
+        border-bottom: solid 1px;
+        color: #000;
+    }
+
+    .join-btn {
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 3rem;
+        border: solid 1px;
+        border-radius: 20px;
+        transition: all .3s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #000;
+            color: #f9f9f9;
+        }
+    }
+}
+</style>

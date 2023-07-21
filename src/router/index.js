@@ -13,19 +13,11 @@ const routes = [
     }
   },
   {
-    path: '/join',
-    name: 'join',
-    component: Home,
-    meta: {
-      title: '加入我们'
-    }
-  },
-  {
     path: '/rule',
     name: 'rule',
     component: Home,
     meta: {
-      title: '规则'
+      title: '条约'
     }
   },
   {

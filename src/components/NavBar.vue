@@ -40,8 +40,7 @@ onUnmounted(() => {
 
 const navList = [
   { title: '首页', link: '/', icon: 'icon-index' },
-  { title: '加入', link: '/join', icon: 'icon-plus' },
-  { title: '规则', link: '/rule', icon: 'icon-rule' },
+  { title: '条约', link: '/rule', icon: 'icon-rule' },
   { title: '帮助', link: '/help', icon: 'icon-help' },
   { title: '反馈', link: '/feedback', icon: 'icon-feedback' }
 ]
