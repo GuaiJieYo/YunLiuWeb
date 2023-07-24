@@ -81,8 +81,23 @@ const FeatureList2 = [
     display: flex;
     justify-content: space-between;
 
+    @media (max-width: 1024px) {
+        padding: 80px 30px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 80px 50px;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+        text-align: center;
+    }
+
     .left {
         margin: 0 20px;
+
+        @media (max-width: 768px) {
+            margin: 0;
+        }
 
         h1 {
             color: #2c3e50;
@@ -99,7 +114,15 @@ const FeatureList2 = [
     .right {
         margin: 0 20px;
 
+        @media (max-width: 768px) {
+            margin: 0;
+        }
+
         img {
+            @media (max-width: 768px) {
+                width: 90vw;
+            }
+
             object-fit: cover;
             border-radius: 10px;
             width: 600px;
@@ -127,6 +150,7 @@ const FeatureList2 = [
         align-items: center;
         justify-content: center;
         list-style: none;
+        flex-wrap: wrap;
 
         li {
             padding: 40px;
@@ -186,6 +210,11 @@ const FeatureList2 = [
         list-style: none;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+
+        @media (max-width: 768px) {
+            justify-content: center;
+        }
 
         li {
             position: relative;
@@ -203,6 +232,10 @@ const FeatureList2 = [
             }
 
             p {
+                @media (max-width: 375px) {
+                    font-size: unset;
+                }
+
                 padding: 10px;
                 text-align: start;
                 position: absolute;
@@ -226,6 +259,10 @@ const FeatureList2 = [
             }
 
             img {
+                @media (max-width: 768px) {
+                    width: 95vw;
+                }
+
                 width: 370px;
                 object-fit: cover;
                 filter: brightness(.3);

@@ -15,9 +15,9 @@
             </div>
         </div>
         <div class="right">
-            <a v-for="(item, index) in List" :href="item.link" :key="item">
+            <a :title="item.title" v-for="(item, index) in List" :href="item.link" :key="item">
                 <i class="iconfont" :class="item.icon"></i>
-                <img :src="'https://api.pwmqr.com/qrcode/create/?url=' + encodeURIComponent(item.link)" alt="QR code">
+                <img :src="'https://api.pwmqr.com/qrcode/create/?url=' + encodeURIComponent(item.link)" :alt="item.title">
             </a>
         </div>
     </div>
@@ -39,8 +39,14 @@ const List = [
     color: #f9f9f9;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap-reverse;
 
     .left {
+        @media (max-width: 768px) {
+            width: 100%;
+            margin-top: 20px;
+        }
+
         width: 40%;
         text-align: left;
 
@@ -70,6 +76,11 @@ const List = [
     }
 
     .right {
+        @media (max-width: 768px) {
+            width: 100%;
+            justify-content: center;
+        }
+
         width: 40%;
         display: flex;
         justify-content: flex-end;
@@ -81,9 +92,18 @@ const List = [
             i {
                 font-size: 3rem;
                 margin: 0 30px;
+                transition: all .3s;
+
+                &:hover {
+                    filter: brightness(.8);
+                }
             }
 
             img {
+                @media (max-width: 768px) {
+                    display: none;
+                }
+
                 object-fit: cover;
                 width: 120px;
                 -webkit-user-drag: none;

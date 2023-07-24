@@ -1,8 +1,7 @@
 <template>
     <div class="join">
         <h1>加入我们</h1>
-        <p>我们是一个和谐且自由的公益Minecraft服务器,</p>
-        <p>马上开始在这里的旅程吧!</p>
+        <p>我们是一个和谐且自由的公益Minecraft服务器,<br>马上开始在这里的旅程吧!</p>
         <small>在游玩之前您需要先阅读我们的<a href="#/rule">隐私协议</a>和<a href="#/rule">玩家条约</a></small>
         <a href="https://dwz.win/a5me" class="join-btn">
             <i class="iconfont icon-qq"></i>
@@ -12,6 +11,7 @@
 </template>
 <style lang="less" scoped>
 .join {
+    text-align: center;
     margin: 60px;
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@
     }
 
     p {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     a {

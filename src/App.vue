@@ -1,5 +1,4 @@
 <template>
-  <div style="font-size: 2rem;width:100vw;position:fixed;bottom: 0;background: #00000050;text-align: center;z-index: 99999999;color: #fff;">目前还为测试版,所有的bug可以反馈至<a style="color:#fff;border-bottom: solid 5px;" href="https://github.com/GuaiJieYo/YunLiuWeb/issues">Github Issues</a></div>
   <transition name="FadeOut">
     <Loading v-if="isloading" />
   </transition>

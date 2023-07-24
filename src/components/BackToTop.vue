@@ -1,29 +1,29 @@
 <template>
-    <div title="回到顶部" @click="Back2Top" class="back2top">
+    <div ref="back2top" title="回到顶部" @click="Back2Top" class="back2top">
         <img src="/imgs/back2top.webp">
     </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { ref,onMounted, onUnmounted } from 'vue'
 
 // 设置滚动条滚动到最低的高度的元素
 const props = defineProps(['show'])
+const back2top = ref(null)
 
 function Back2Top() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
-    document.querySelector('.back2top').style.right = '-150px'
+    back2top.value.style.right = '-150px'
 }
 
 function ShowButton() {
-    const Back2TopEl = document.querySelector('.back2top')
     const El = document.querySelector(props.show)
     const ScrollTop = window.pageYOffset || document.body.scrollTop
 
     if (ScrollTop > (El.offsetTop + El.offsetHeight)/2) {
-        Back2TopEl.style.right = '0'
+        back2top.value.style.right = '0'
     } else {
-        Back2TopEl.style.right = '-150px'
+        back2top.value.style.right = '-150px'
     }
 }
 
@@ -48,6 +48,9 @@ onUnmounted(() => {
     cursor: pointer;
 
     img {
+        @media (max-width: 425px) {
+            width: 100px;
+        }
         object-fit: cover;
         width: 150px;
         -webkit-user-drag: none;

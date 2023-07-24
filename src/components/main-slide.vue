@@ -65,10 +65,10 @@ function stopAutoPlay() {
 
 function Start(e) {
     const ElParent = e.target.parentNode
-    window.scrollTo({
+    scrollTo({
         top: ElParent.offsetTop + ElParent.offsetHeight,
         behavior: 'smooth'
-    }) // 移动到第一个页面
+    }) // 移动到第一个部分
 }
 </script>
 
@@ -95,10 +95,22 @@ function Start(e) {
         text-align: center;
 
         h1 {
+            @media (max-width: 600px) {
+                font-size: 3.5rem;
+            }
+
+            @media (max-width: 425px) {
+                font-size: 2.5rem;
+            }
+
             font-size: 5rem;
         }
 
         h2 {
+            @media (max-width: 425px) {
+                font-size: 1.3rem;
+            }
+
             font-size: 2rem;
         }
     }
@@ -129,7 +141,7 @@ function Start(e) {
         font-size: 5rem;
         color: @slide-button-color;
         cursor: pointer;
-        z-index: 1;
+        z-index: 2;
         transition: all 0.3s;
 
         &:hover {
@@ -137,11 +149,17 @@ function Start(e) {
         }
 
         &.prev {
+            @media (max-width: 600px) {
+                left: 10px;
+            } 
             left: 20px;
             transform: translateY(-50%);
         }
 
         &.next {
+            @media (max-width: 600px) {
+                right: 10px;
+            } 
             right: 20px;
             transform: translateY(-50%);
         }
@@ -167,13 +185,14 @@ function Start(e) {
 }
 
 @keyframes StartBtn {
+
     0%,
     100% {
-        transform: translate(-50%,0);
+        transform: translate(-50%, 0);
     }
 
     50% {
-        transform: translate(-50%,-5px);
+        transform: translate(-50%, -5px);
     }
 }
 </style>

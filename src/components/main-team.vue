@@ -2,15 +2,14 @@
     <div class="team">
         <h1>我们的团队</h1>
         <p>皮肤来自于Mojang API</p>
-        <div class="scroll">
-            <ul id="team">
-                <li v-for="(item, index) in TeamList" :key="index">
-                    <img :src="item.skin">
-                    <h2>{{ item.id }}</h2>
-                    <p>{{ item.info }}</p>
-                </li>
-            </ul>
-        </div>
+        <p @click="SkipList" class="skip">点我跳过此列表</p>
+        <ul>
+            <li v-for="(item, index) in TeamList" :key="index">
+                <img :src="item.skin">
+                <h2>{{ item.id }}</h2>
+                <p>{{ item.info }}</p>
+            </li>
+        </ul>
     </div>
 </template>
   
@@ -73,34 +72,39 @@ const TeamList = [
     }
 ]
 
+// 跳过团队成员列表
+function SkipList(e) {
+    const ElParent = e.target.parentNode
+    scrollTo({
+        top: ElParent.offsetTop + ElParent.offsetHeight,
+        behavior: 'smooth'
+    }) // 移动到第一个部分
+}
 </script>
   
 <style lang="less" scoped>
 .team {
-    padding: 60px;
     text-align: center;
+
+    .skip {
+        margin: auto;
+        width: fit-content;
+        font-size: .9rem;
+        border-bottom: solid 1px;
+        cursor: pointer;
+    }
 
     h1 {
         font-size: 2rem;
     }
 
-    .scroll {
+    ul {
         overflow: hidden;
-        ul {
-            margin-top: 20px;
-            list-style: none;
-            display: flex;
-            animation: ScrollToEnd 20s infinite linear alternate;
-        }
-    }
-}
-
-@keyframes ScrollToEnd {
-    from {
-        transform: translate(0);
-    }
-    to {
-        transform: translateX(-2415px);
+        margin-top: 20px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
 </style>

@@ -21,14 +21,6 @@ const routes = [
     }
   },
   {
-    path: '/help',
-    name: 'help',
-    component: Home,
-    meta: {
-      title: '帮助'
-    }
-  },
-  {
     path: '/feedback',
     name: 'feedback',
     component: Home,

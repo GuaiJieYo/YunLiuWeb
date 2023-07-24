@@ -17,16 +17,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-ban:before {
+  content: "\e906";
+}
+
+.icon-list:before {
+  content: "\e904";
+}
+
 .icon-qq:before {
   content: "\e90e";
 }
 
-.icon-minecraft:before {
-  content: "\e908";
+.icon-world:before {
+  content: "\e90c";
 }
 
-.icon-warn:before {
-  content: "\e90a";
+.icon-admins:before {
+  content: "\e90d";
+}
+
+.icon-fair:before {
+  content: "\e90b";
 }
 
 .icon-github:before {
@@ -45,16 +57,8 @@
   content: "\e903";
 }
 
-.icon-help:before {
-  content: "\e904";
-}
-
 .icon-rule:before {
   content: "\e905";
-}
-
-.icon-plus:before {
-  content: "\e906";
 }
 
 .icon-index:before {
@@ -63,16 +67,4 @@
 
 .icon-love:before {
   content: "\e909";
-}
-
-.icon-world:before {
-  content: "\e90c";
-}
-
-.icon-admins:before {
-  content: "\e90d";
-}
-
-.icon-fair:before {
-  content: "\e90b";
 }
