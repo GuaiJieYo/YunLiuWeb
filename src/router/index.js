@@ -13,6 +13,14 @@ const routes = [
     }
   },
   {
+    path: '/ban',
+    name: 'banlist',
+    component: Home,
+    meta: {
+      title: '封禁列表'
+    }
+  },
+  {
     path: '/rule',
     name: 'rule',
     component: Home,

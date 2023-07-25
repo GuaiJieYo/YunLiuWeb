@@ -17,6 +17,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-rule:before {
+  content: "\e905";
+}
+
 .icon-ban:before {
   content: "\e906";
 }
@@ -55,10 +59,6 @@
 
 .icon-cloud:before {
   content: "\e903";
-}
-
-.icon-rule:before {
-  content: "\e905";
 }
 
 .icon-index:before {

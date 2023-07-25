@@ -216,8 +216,13 @@ const FeatureList2 = [
             justify-content: center;
         }
 
+        @media (max-width: 1024px) {
+            justify-content: center;
+        }
+
         li {
             position: relative;
+            margin: 10px;
 
             h2 {
                 position: absolute;

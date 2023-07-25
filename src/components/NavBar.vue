@@ -10,11 +10,12 @@
             </div>
             <div ref="mask" @click="toggleMenu" class="mask"></div>
             <div :class="rightBg" class="right">
-                <router-link exact-active-class="active" :to="item.link" v-for="(item, index) in navList" :key="index"
-                    :href="item.link">
-                    <i class="iconfont" :class="item.icon"></i>
-                    {{ item.title }}
-                </router-link>
+                <div style="width: fit-content" v-for="(item, index) in navList" :key="index">
+                    <router-link exact-active-class="active" :to="item.link">
+                        <i class="iconfont" :class="item.icon"></i>
+                        {{ item.title }}
+                    </router-link>
+                </div>
             </div>
         </div>
     </header>
@@ -144,13 +145,13 @@ header {
 
         .right {
             z-index: 99;
+            display: flex;
 
             @media (max-width: 768px) {
                 position: absolute;
                 top: 80px;
                 right: -160px;
                 width: fit-content;
-                display: flex;
                 flex-direction: column;
                 transition: all .3s;
             }
