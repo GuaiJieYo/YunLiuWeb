@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 // 导入组件(动态导入)
 const Home = () => import('../views/main.vue')
+const Rule = () => import('../views/rule.vue')
 
 // 路由列表
 const routes = [
@@ -23,7 +24,7 @@ const routes = [
   {
     path: '/rule',
     name: 'rule',
-    component: Home,
+    component: Rule,
     meta: {
       title: '条约'
     }
@@ -54,6 +55,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   window.document.title = `${to.meta.title} - YunLiuCraft`
+  scrollTo({ top: 0, behavior: 'smooth' }) // 自动回滚到最顶部
   next()
 })
 

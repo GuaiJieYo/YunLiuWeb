@@ -17,7 +17,7 @@
         <div class="right">
             <a :title="item.title" v-for="(item, index) in List" :href="item.link" :key="item">
                 <i class="iconfont" :class="item.icon"></i>
-                <img :src="'https://api.pwmqr.com/qrcode/create/?url=' + encodeURIComponent(item.link)" :alt="item.title">
+                <img :src="`/imgs/qrcode/${item.title}.png`" :alt="item.title">
             </a>
         </div>
     </div>
@@ -104,6 +104,7 @@ const List = [
                     display: none;
                 }
 
+                image-rendering: pixelated;
                 object-fit: cover;
                 width: 120px;
                 -webkit-user-drag: none;

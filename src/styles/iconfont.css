@@ -17,6 +17,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-folder:before {
+  content: "\e908";
+}
+
 .icon-rule:before {
   content: "\e905";
 }

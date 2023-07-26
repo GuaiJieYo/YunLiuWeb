@@ -41,7 +41,7 @@ const toggleMenu = () => {
 
 const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.body.scrollTop // 获取页面滚动的距离（兼容不同浏览器）
-    const windowWidth = window.innerWidth // 或区屏幕长度
+    const windowWidth = window.innerWidth // 获取屏幕长度
     if (scrollTop > 0) {
         if (windowWidth < 768) {
             rightBg.value = 'right-bg'

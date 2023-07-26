@@ -1,29 +1,14 @@
 <template>
-    <transition name="FadeOut">
-        <div v-if="IsLoaded" class="LoadingBox">
-            <div class="Loading">
-                <span v-for="item in 4" :key="item"></span>
-            </div>
-            <div class="Text">
-                <h2>网页加载中</h2>
-                <p>加载图片等资源需要较长时间,请耐心等待</p>
-            </div>
+    <div class="LoadingBox">
+        <div class="Loading">
+            <span v-for="item in 4" :key="item"></span>
         </div>
-    </transition>
+        <div class="Text">
+            <h2>网页加载中</h2>
+            <p>加载图片等资源需要较长时间,请耐心等待</p>
+        </div>
+    </div>
 </template>
-<script setup>
-import { ref, onMounted } from 'vue'
-let IsLoaded = ref(true)
-
-onMounted(() => {
-    document.body.style.overflow = 'hidden'
-})
-
-window.onload = () => {
-    IsLoaded.value = false
-    document.body.style.overflow = ''
-}
-</script>
 <style lang="less" scoped>
 .LoadingBox {
     z-index: 9999;
