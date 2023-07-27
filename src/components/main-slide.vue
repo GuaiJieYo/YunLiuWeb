@@ -6,7 +6,7 @@
             <h2>一个温馨的服务器♥</h2>
         </div>
         <div>
-            <img v-for="(image, index) in images" :src="image" :class="{ 'active': index === activeIndex }">
+            <img v-for="(image, index) in images" :src="'/imgs/banner/' + image" :class="{ 'active': index === activeIndex }">
         </div>
         <div class="next" @click="NextSlide">&#10095;</div>
         <div class="start" @click="Start">&or;</div>
@@ -17,11 +17,14 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const activeIndex = ref(0)
-// 图片在更目录的public文件夹的imgs文件夹里
+// 图片在public/imgs/banner里
+// 直接放入图片名即可(要有后缀)
 const images = [
-    '/imgs/1.webp',
-    '/imgs/2.webp',
-    '/imgs/3.webp'
+    'banner1.jpg',
+    'banner2.jpg',
+    'banner3.jpg',
+    'banner4.jpg',
+    'banner5.jpg',
 ]
 let intervalId
 
@@ -56,7 +59,7 @@ function NextSlide() {
 function startAutoPlay() {
     intervalId = setInterval(() => {
         NextSlide()
-    }, 5000) // 每 5 秒切换一次轮播图
+    }, 3000) // 每 3 秒切换一次轮播图
 }
 
 function stopAutoPlay() {

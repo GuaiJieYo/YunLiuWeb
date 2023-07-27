@@ -1,8 +1,8 @@
 <template>
     <div class="banner">
-        <img src="/imgs/1.webp" alt="banner">
+        <img src="/imgs/banner/banner3.jpg" alt="banner">
         <h1>群聊规则 | 玩家条约</h1>
-        <p>本篇约 {{ Txtlength }}K 字</p>
+        <p>{{ Txtlength }}</p>
         <p>此条约不一定为最新，部分信息可能已发生改变，请到QQ群内查看最新条约。</p>
     </div>
     <div class="content">
@@ -42,7 +42,7 @@ function renderMarkdown() {
     fetch(`/rules/YunLiuCraft${Docname}Rules.md`)
         .then(response => response.text())
         .then((data) => {
-            Txtlength = Math.round(data.replace(/\n|\r/gi, "").length / 100) / 10 // 四舍五入出文字数量
+            Txtlength = `本篇文档约 ${Math.round(data.replace(/\n|\r/gi, "").length / 100) / 10}K 字` // 四舍五入出文字数量
             Mdcontent.value = Mdrender.render(data)
             // 将字符串解析为DOM
             const MDdom = new DOMParser().parseFromString(Mdcontent.value, "text/html")

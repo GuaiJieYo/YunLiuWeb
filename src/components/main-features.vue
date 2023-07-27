@@ -8,7 +8,7 @@
             </p>
         </div>
         <div class="right">
-            <img src="/imgs/1.webp" alt="Welcome">
+            <img src="/imgs/banner/banner1.jpg" alt="Welcome">
         </div>
     </div>
     <div class="features">
