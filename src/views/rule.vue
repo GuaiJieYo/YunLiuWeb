@@ -101,6 +101,7 @@ onMounted(() => {
         filter: brightness(60%);
         width: 100%;
         height: 100%;
+        object-fit: cover;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);

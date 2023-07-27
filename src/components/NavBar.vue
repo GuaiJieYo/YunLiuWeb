@@ -9,7 +9,7 @@
                 <i @click="toggleMenu" class="iconfont icon-list"></i>
             </div>
             <div ref="mask" @click="toggleMenu" class="mask"></div>
-            <div class="right right-bg">
+            <div class="right">
                 <div style="width: fit-content" v-for="(item, index) in navList" :key="index">
                     <router-link exact-active-class="active" :to="item.link">
                         <i class="iconfont" :class="item.icon"></i>
@@ -79,6 +79,9 @@ header {
             display: block;
             position: relative;
             margin: 0;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+                0 2px 10px 0 rgba(0, 0, 0, 0.12);
         }
 
         height: 100%;
@@ -201,8 +204,7 @@ header {
     }
 }
 
-.header-bg,
-.right-bg {
+.header-bg {
     background: rgba(0, 0, 0, 0.5);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
         0 2px 10px 0 rgba(0, 0, 0, 0.12);
