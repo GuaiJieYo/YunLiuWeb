@@ -9,7 +9,7 @@
                 <i @click="toggleMenu" class="iconfont icon-list"></i>
             </div>
             <div ref="mask" @click="toggleMenu" class="mask"></div>
-            <div :class="rightBg" class="right">
+            <div class="right right-bg">
                 <div style="width: fit-content" v-for="(item, index) in navList" :key="index">
                     <router-link exact-active-class="active" :to="item.link">
                         <i class="iconfont" :class="item.icon"></i>
@@ -25,7 +25,6 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const headerBg = ref('') // 头部样式类名，用于控制头部背景
-const rightBg = ref('') // 右边部分
 const mask = ref(null)
 
 const toggleMenu = () => {
@@ -41,14 +40,10 @@ const toggleMenu = () => {
 
 const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.body.scrollTop // 获取页面滚动的距离（兼容不同浏览器）
-    const windowWidth = window.innerWidth // 获取屏幕长度
     if (scrollTop > 0) {
-        if (windowWidth < 768) {
-            rightBg.value = 'right-bg'
-        }
         headerBg.value = 'header-bg' // 当滚动距离大于0时，添加背景样式
     } else {
-        headerBg.value = rightBg.value = '' // 当滚动距离为0时，移除背景样式
+        headerBg.value = '' // 当滚动距离为0时，移除背景样式
     }
 }
 

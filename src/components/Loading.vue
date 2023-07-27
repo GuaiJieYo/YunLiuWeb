@@ -1,14 +1,33 @@
 <template>
-    <div class="LoadingBox">
-        <div class="Loading">
-            <span v-for="item in 4" :key="item"></span>
+    <transition name="Fade">
+        <div v-if="IsLoaded" class="LoadingBox">
+            <div class="Loading">
+                <span v-for="item in 4" :key="item"></span>
+            </div>
+            <div class="Text">
+                <h2>网页加载中</h2>
+                <p>加载图片等资源需要较长时间,请耐心等待</p>
+            </div>
         </div>
-        <div class="Text">
-            <h2>网页加载中</h2>
-            <p>加载图片等资源需要较长时间,请耐心等待</p>
-        </div>
-    </div>
+    </transition>
 </template>
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const IsLoaded = ref(true)
+
+function hiddenLoadingBox() {
+    IsLoaded.value = false
+}
+
+onMounted(() => {
+    window.addEventListener('load', hiddenLoadingBox)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('load', hiddenLoadingBox)
+})
+</script>
 <style lang="less" scoped>
 .LoadingBox {
     z-index: 9999;

@@ -2,23 +2,23 @@
     <div class="banner">
         <img src="/imgs/1.webp" alt="banner">
         <h1>群聊规则 | 玩家条约</h1>
+        <p>本篇约 {{ Txtlength }}K 字</p>
         <p>此条约不一定为最新，部分信息可能已发生改变，请到QQ群内查看最新条约。</p>
     </div>
     <div class="content">
         <div class="toc">
+            <p><i class="iconfont icon-folder"></i>文档目录</p>
+            <ul ref="Folderel">
+                <li @click="toggleDoc" class="active">1. 群聊规则</li>
+                <li @click="toggleDoc">2. 玩家条约</li>
+            </ul>
+            <hr>
             <p><i class="iconfont icon-list"></i>目录</p>
             <ul>
                 <li @click="tocScrollTo(index)" v-for="(item, index) in toclist" :key="index">{{ item }}</li>
             </ul>
         </div>
         <div class="mdcontent" v-html="Mdcontent"></div>
-        <div class="toc" style="right: 5px;left: 0;">
-            <p><i class="iconfont icon-folder"></i>文档目录</p>
-            <ul>
-                <li @click="toggleDoc" class="active">1. 群聊规则</li>
-                <li @click="toggleDoc">2. 玩家条约</li>
-            </ul>
-        </div>
     </div>
     <BackToTop show=".banner" />
 </template>
@@ -29,35 +29,49 @@ import { ref, onMounted } from "vue"
 import markdownIt from "markdown-it"
 import '../styles/markdown.less'
 
-let Mdcontent = ref(`<h1>文档读取中...<h1>`)
+let Mdcontent = ref(`<h1>文档读取中...</h1>`)
 let toclist = ref([])
+let Folderel = ref(null)
+let Docname = 'Group'
+let Txtlength
 
 const Mdrender = new markdownIt()
 
 function renderMarkdown() {
-    var xhr = new XMLHttpRequest()
-    xhr.open('GET', '/rules/YunLiuCraftRules.md', true)
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            var fileContent = xhr.responseText
-            // console.log(Math.round(fileContent.replace(/\n|\r/gi, "").length/100)/10) // 四舍五入出文字数量
-            Mdcontent.value = Mdrender.render(fileContent)
+    // 异步加载文档文件
+    fetch(`/rules/YunLiuCraft${Docname}Rules.md`)
+        .then(response => response.text())
+        .then((data) => {
+            Txtlength = Math.round(data.replace(/\n|\r/gi, "").length / 100) / 10 // 四舍五入出文字数量
+            Mdcontent.value = Mdrender.render(data)
             // 将字符串解析为DOM
-            const MDdom = new DOMParser().parseFromString(Mdcontent.value, "text/html");
+            const MDdom = new DOMParser().parseFromString(Mdcontent.value, "text/html")
+            toclist.value = []
             for (let i = 0; i < MDdom.querySelectorAll('h2').length; i++) {
-                toclist.value.push(MDdom.querySelectorAll('h2')[i].innerHTML) // 推送DOM内容至toclist
+                toclist.value.push(i + 1 + '. ' + MDdom.querySelectorAll('h2')[i].innerHTML) // 推送DOM内容至toclist
             }
-        }
-    }
-    xhr.send()
+        })
 }
 
+// 滚动到某个元素处
 function tocScrollTo(id) {
-    document.querySelectorAll('#app > main > div.content > div.mdcontent > h2')[id].scrollIntoView({ behavior: 'smooth',block: "center" })
+    document.querySelectorAll('#app > main > div.content > div.mdcontent > h2')[id].scrollIntoView({ behavior: 'smooth', block: "center" })
 }
 
-function toggleDoc(name) {
-    alert('网页施工中....')
+// 切换doc
+function toggleDoc(e) {
+    if (e.target.classList == 'active') {
+        return
+    }
+    Folderel.value.querySelector('.active').classList = ''
+    if (Docname == 'Group') {
+        Folderel.value.querySelectorAll('li')[1].classList = 'active'
+        Docname = 'Game'
+    } else {
+        Folderel.value.querySelectorAll('li')[0].classList = 'active'
+        Docname = 'Group'
+    }
+    renderMarkdown()
 }
 
 onMounted(() => {
@@ -74,6 +88,7 @@ onMounted(() => {
     align-items: center;
     flex-direction: column;
     color: #fff;
+    text-align: center;
     overflow: hidden;
     position: relative;
 
@@ -85,6 +100,7 @@ onMounted(() => {
     img {
         filter: brightness(60%);
         width: 100%;
+        height: 100%;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -95,9 +111,26 @@ onMounted(() => {
     width: 100vw;
     margin: 40px 0;
     display: flex;
+    justify-content: center;
     position: relative;
 
+    @media (max-width: 425px) {
+        flex-wrap: wrap;
+    }
+
     .toc {
+        @media (max-width: 768px) {
+            width: 100px;
+        }
+
+        @media (max-width: 425px) {
+            position: unset;
+            padding: 40px;
+            width: 60vw;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
         position: sticky;
         top: 120px;
         left: 5px;
@@ -107,9 +140,13 @@ onMounted(() => {
         border-radius: 10px;
         background-color: #fff;
         box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
-            0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
 
         p {
+            @media (max-width: 768px) {
+                font-size: 1.1rem;
+            }
+
             font-size: 1.5rem;
 
             i {
@@ -125,6 +162,7 @@ onMounted(() => {
                 color: #000;
                 transition: all .3s;
                 margin: 5px 0;
+                width: fit-content;
                 cursor: pointer;
 
                 &.active {

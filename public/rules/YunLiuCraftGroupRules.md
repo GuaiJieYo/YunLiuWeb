@@ -72,6 +72,6 @@
 
 3. 管理严重违规		同1
 
-群规贡献者：怪杰（GuaiJie），千秋（Fake_smile），MSNDicrosoft（MSNDicrosoft）
+**群规贡献者：怪杰（GuaiJie），千秋（Fake_smile），MSDNicrosoft（MSDNicrosoft）**
 
-希望每个人都能尽量遵守群规，维护绿色，健康的群聊环境，谢谢大家！
+**希望每个人都能尽量遵守群规，维护绿色，健康的群聊环境，谢谢大家！**
