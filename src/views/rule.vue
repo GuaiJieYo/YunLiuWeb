@@ -63,7 +63,7 @@ function toggleDoc(e) {
     if (e.target.classList == 'active') {
         return
     }
-    e.target.classList = ''
+    Folderel.value.querySelector('.active').classList = ''
     if (Docname == 'Group') {
         Folderel.value.querySelectorAll('li')[1].classList = 'active'
         Docname = 'Game'
