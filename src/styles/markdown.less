@@ -1,40 +1,39 @@
 // Markdown样式文件
 // 以防样式弄混 只能在.content > .mdcontent里面用
-.content {
-    .mdcontent {
-        h1 {
-            text-align: center;
-            font-size: 3rem;
+.content>.mdcontent {
+    h1 {
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    h2 {
+        width: fit-content;
+
+        &::before {
+            content: '§';
+            margin-right: 10px;
+            opacity: 0;
+            transition: all .3s;
         }
 
-        h2 {
-            width: fit-content;
-            &::before {
-                content: '§';
-                margin-right: 10px;
-                opacity: 0;
-                transition: all .3s;
-            }
+        &:hover::before {
+            opacity: 1;
+        }
+    }
 
-            &:hover::before {
-                opacity: 1;
-            }
-        }
-        
-        h3 {
-            margin: 3px 0;
-        }
+    h3 {
+        margin: 3px 0;
+    }
 
-        hr {
-            // 分隔符
-            margin: 5px 0;
-            height: 1px;
-            background-color: #00000030;
-            border: none;
-        }
+    hr {
+        // 分隔符
+        margin: 5px 0;
+        height: 1px;
+        background-color: #00000030;
+        border: none;
+    }
 
-        p {
-            margin: 3px 0;
-        }
+    p {
+        margin: 3px 0;
     }
 }
