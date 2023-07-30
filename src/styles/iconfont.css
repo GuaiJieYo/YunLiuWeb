@@ -17,6 +17,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-loader:before {
+  content: "\e90f";
+}
+
+.icon-terminal:before {
+  content: "\e90a";
+}
+
 .icon-folder:before {
   content: "\e908";
 }

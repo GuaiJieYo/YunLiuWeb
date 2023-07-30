@@ -15,6 +15,7 @@
             <hr>
             <p><i class="iconfont icon-list"></i>目录</p>
             <ul>
+                <li v-if="IsLoaded" class="iconfont icon-loader"></li>
                 <li @click="tocScrollTo(index)" v-for="(item, index) in toclist" :key="index">{{ item }}</li>
             </ul>
         </div>
@@ -29,15 +30,20 @@ import { ref, onMounted } from "vue"
 import markdownIt from "markdown-it"
 import '../styles/markdown.less'
 
-let Mdcontent = ref(`<h1>文档读取中...</h1>`)
+let Mdcontent = ref(`<h1>文档读取中...</h1><div class="iconfont icon-loader" style="width: fit-content;margin: 10px auto;font-size: 5rem;animation: Roate 3s infinite linear;"></div>`)
 let toclist = ref([])
 let Folderel = ref(null)
+let IsLoaded = ref(true)
 let Docname = 'Group'
 let Txtlength
 
 const Mdrender = new markdownIt()
 
 function renderMarkdown() {
+    // 显示Loader 清空toc列表
+    toclist.value = []
+    Mdcontent.value = `<h1>文档读取中...</h1><div class="iconfont icon-loader" style="width: fit-content;margin: 10px auto;font-size: 5rem;animation: Roate 3s infinite linear;"></div>`
+    IsLoaded.value = true
     // 异步加载文档文件
     fetch(`/rules/YunLiuCraft${Docname}Rules.md`)
         .then(response => response.text())
@@ -46,10 +52,11 @@ function renderMarkdown() {
             Mdcontent.value = Mdrender.render(data)
             // 将字符串解析为DOM
             const MDdom = new DOMParser().parseFromString(Mdcontent.value, "text/html")
-            toclist.value = []
             for (let i = 0; i < MDdom.querySelectorAll('h2').length; i++) {
-                toclist.value.push(i + 1 + '. ' + MDdom.querySelectorAll('h2')[i].innerHTML) // 推送DOM内容至toclist
+                toclist.value.push(i + 1 + '. ' + MDdom.querySelectorAll('h2')[i].innerHTML) // 推送DOM内容至toclist 
             }
+            // 加载完毕隐藏loader
+            IsLoaded.value = false
         })
 }
 
@@ -63,6 +70,7 @@ function toggleDoc(e) {
     if (e.target.classList == 'active') {
         return
     }
+    document.querySelector('.mdcontent').scrollIntoView(true,{ behavior: 'smooth'})
     Folderel.value.querySelector('.active').classList = ''
     if (Docname == 'Group') {
         Folderel.value.querySelectorAll('li')[1].classList = 'active'
@@ -132,6 +140,7 @@ onMounted(() => {
             margin-bottom: 20px;
         }
 
+        transition: all .3s;
         position: sticky;
         top: 120px;
         left: 5px;
@@ -166,12 +175,18 @@ onMounted(() => {
                 width: fit-content;
                 cursor: pointer;
 
+                &.icon-loader {
+                    margin: 10px auto;
+                    font-size: 5rem;
+                    animation: Roate 3s infinite linear;
+                }
+
                 &.active {
                     color: #0366d6;
                     font-weight: 500;
                 }
 
-                &:not(.active):hover {
+                &:not(.active, .icon-loader):hover {
                     color: #30a9de;
                     font-weight: 500;
                 }
@@ -184,11 +199,13 @@ onMounted(() => {
         border-radius: 20px;
         padding: 40px;
         width: 60vw;
+        // 为了防止闪屏才设置的minheight
+        min-height: 100vh;
         background-color: #fff;
         box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
             0 17px 50px 0 rgba(0, 0, 0, 0.19);
     }
 }
 
-// Markdown渲染出来的HTML需要单独写样式 所以请移步至styles/markdown.css
+// Markdown渲染出来的HTML需要单独写样式scoped显示不出来 所以请移步至styles/markdown.css
 </style>
