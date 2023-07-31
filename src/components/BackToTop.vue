@@ -18,7 +18,7 @@ function Back2Top() {
 
 function ShowButton() {
     const El = document.querySelector(props.show)
-    const ScrollTop = window.pageYOffset || document.body.scrollTop
+    const ScrollTop = window.scrollY || document.body.scrollTop
 
     if (ScrollTop > (El.offsetTop + El.offsetHeight)/2) {
         back2top.value.style.right = '0'
