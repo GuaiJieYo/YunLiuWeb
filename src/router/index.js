@@ -1,7 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 // 导入组件(动态导入)
 const Home = () => import('../views/main.vue')
+const Ban = () => import('../views/ban.vue')
 const Rule = () => import('../views/rule.vue')
+const NotFound = () => import('../views/notfound.vue')
 
 // 路由列表
 const routes = [
@@ -16,7 +18,7 @@ const routes = [
   {
     path: '/ban',
     name: 'banlist',
-    component: Home,
+    component: Ban,
     meta: {
       title: '封禁列表'
     }
@@ -40,7 +42,7 @@ const routes = [
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: Home,
+    component: NotFound,
     meta: {
       title: '未知页面'
     },
