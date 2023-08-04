@@ -28,6 +28,7 @@
 import BackToTop from '../components/BackToTop.vue'
 import { ref, onMounted } from "vue"
 import markdownIt from "markdown-it"
+import { useToast } from 'vue-toast-notification'
 import '../styles/markdown.less'
 
 let Mdcontent = ref(`<h1>文档读取中...</h1><div class="iconfont icon-loader" style="width: fit-content;margin: 10px auto;font-size: 5rem;animation: Roate 3s infinite linear;"></div>`)
@@ -37,15 +38,17 @@ let IsLoaded = ref(true)
 let Docname = 'Group'
 let Txtlength
 
+// 默认使Toast位于右上角
+const Toast = useToast({position: 'top-right'})
 const Mdrender = new markdownIt()
 
-function renderMarkdown() {
+async function renderMarkdown() {
     // 显示Loader 清空toc列表
     toclist.value = []
     Mdcontent.value = `<h1>文档读取中...</h1><div class="iconfont icon-loader" style="width: fit-content;margin: 10px auto;font-size: 5rem;animation: Roate 3s infinite linear;"></div>`
     IsLoaded.value = true
     // 异步加载文档文件
-    fetch(`/rules/YunLiuCraft${Docname}Rules.md`)
+    await fetch(`/rules/YunLiuCraft${Docname}Rules.md`)
         .then(response => response.text())
         .then((data) => {
             Txtlength = `本篇文档约 ${Math.round(data.replace(/\n|\r/gi, "").length / 100) / 10}K 字` // 四舍五入出文字数量
@@ -57,6 +60,9 @@ function renderMarkdown() {
             }
             // 加载完毕隐藏loader
             IsLoaded.value = false
+        })
+        .catch(error => {
+            Toast.error('数据获取失败，请检查网络是否连接正常！')
         })
 }
 
@@ -88,34 +94,7 @@ onMounted(() => {
 </script>
 
 <style lang="less" scoped>
-.banner {
-    width: 100vw;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: #fff;
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-
-    h1,
-    p {
-        z-index: 5;
-    }
-
-    img {
-        filter: brightness(60%);
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-}
-
+// banner的样式迁移到base.less了(63行)
 .content {
     width: 100vw;
     margin: 40px 0;
@@ -165,8 +144,6 @@ onMounted(() => {
         }
 
         ul {
-            list-style: none;
-
             li {
                 border-radius: 5px;
                 color: #000;

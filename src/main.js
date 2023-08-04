@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import router from './router'
+import 'vue-toast-notification/dist/theme-bootstrap.css'
 import './styles/base.less'
 import './styles/iconfont.css'
 import App from './App.vue'

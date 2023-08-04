@@ -149,7 +149,6 @@ const FeatureList2 = [
         display: flex;
         align-items: center;
         justify-content: center;
-        list-style: none;
         flex-wrap: wrap;
 
         li {
@@ -207,7 +206,6 @@ const FeatureList2 = [
 
     ul {
         margin-top: 20px;
-        list-style: none;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;

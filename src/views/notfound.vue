@@ -20,7 +20,7 @@
             <p>网页走丢了</p>
             <div class="buttons-con">
                 <div class="action-link-wrap">
-                    <a href="/" class="link-button link-back-button">返回主页</a>
+                    <a href="#/" class="link-button link-back-button">返回主页</a>
                 </div>
             </div>
         </div>

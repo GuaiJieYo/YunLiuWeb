@@ -2,6 +2,7 @@
     <div class="team">
         <h1>我们的团队</h1>
         <p>皮肤来自于Mojang API</p>
+        <!-- 渲染自NameMC(后面会换成SkinView3D) -->
         <p @click="SkipList" class="skip">点我跳过此列表</p>
         <ul>
             <li v-for="(item, index) in TeamList" :key="index">
@@ -101,7 +102,6 @@ function SkipList(e) {
     ul {
         overflow: hidden;
         margin-top: 20px;
-        list-style: none;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
