@@ -1,3 +1,4 @@
+<!-- 本页以后可能会重写 -->
 <template>
     <div class="banner">
         <img src="/imgs/banner/banner2.jpg" alt="banner">
@@ -7,7 +8,8 @@
     <div class="content">
         <h1>封禁列表</h1>
         <div class="search">
-            <input type="text" id="search" name="search" placeholder="输入名字来搜索吧~">
+            <i class="iconfont icon-x"></i>
+            <input type="text" v-model="searchInput" placeholder="输入名字来搜索吧~">
             <i @click="Search" class="iconfont icon-search"></i>
         </div>
         <hr>
@@ -21,7 +23,7 @@
                 <p>封禁时长</p>
                 <p>封禁者</p>
             </li>
-            <li v-for="( item, index) in BannedPlayerInfo" :key="index">
+            <li v-for="( item, index) in BannedPlayerInfo" :key="index" :id="item.uuid">
                 <p><img :src="`https://minotar.net/helm/${item.uuid}/50`" :title="item.uuid"></p>
                 <p>{{ item.name }}</p>
                 <p>{{ item.reason }}</p>
@@ -38,17 +40,24 @@ import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toast-notification'
 
 // 默认使Toast位于右上角
-const Toast = useToast({ position: 'top-right' })
+const Toast = useToast({ position: 'top-right', pauseOnHover: false })
 let IsLoaded = ref(false)
 // 储存JSON数据
 let BannedPlayerInfo = ref([])
+let searchInput = '' // 是input的值默认为空
 
 function Search() {
-    if (IsLoaded) {
-        alert('test')
-    } else {
+    if (IsLoaded.value == false) {
         Toast.info('数据还未加载完毕，请稍后重试！')
+        return
     }
+
+    if (searchInput == '') {
+        Toast.info('搜索不能为空！')
+        return
+    }
+
+    // TODO 从数组中搜索符合条件的数据进行渲染 或者 将不符合的全部隐藏掉
 }
 
 async function getBannedPlayerInfo() {
@@ -87,6 +96,7 @@ async function getBannedPlayerInfo() {
 
 onMounted(() => {
     getBannedPlayerInfo()
+    Toast.warning('警告: 本页面尚未完工,可能会出现未知的问题！', { duration: 10000 })
 })
 </script>
 
@@ -113,8 +123,9 @@ onMounted(() => {
 
         input {
             outline-style: none;
-            border: solid 2px;
-            border-radius: 5px;
+            border: none;
+            border-bottom: solid 2px;
+            background-color: transparent;
             padding: 0 3px;
             font-size: 1.5rem;
             transition: all .3s linear;
@@ -129,7 +140,7 @@ onMounted(() => {
         }
 
         i {
-            margin-left: 10px;
+            margin: 0 10px;
             font-size: 2rem;
             cursor: pointer;
             transition: all .3s linear;

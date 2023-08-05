@@ -17,16 +17,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-x:before {
+  content: "\e90a";
+}
+
 .icon-search:before {
   content: "\e910";
 }
 
 .icon-loader:before {
   content: "\e90f";
-}
-
-.icon-terminal:before {
-  content: "\e90a";
 }
 
 .icon-folder:before {

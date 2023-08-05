@@ -6,10 +6,10 @@
                     <i class="iconfont icon-cloud"></i>
                     <p>YunLiuCraft</p>
                 </router-link>
-                <i @click="toggleMenu" class="iconfont icon-list"></i>
+                <i ref="btn" @click="toggleMenu" class="iconfont icon-list btn"></i>
             </div>
-            <div ref="mask" @click="toggleMenu" class="mask"></div>
-            <div class="right">
+            <div v-if="mask" @click="toggleMenu" class="mask"></div>
+            <div class="right" :style="`right:${showRouter}`">
                 <div style="width: fit-content" v-for="(item, index) in navList" :key="index">
                     <router-link exact-active-class="active" :to="item.link">
                         <i class="iconfont" :class="item.icon"></i>
@@ -25,20 +25,25 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const headerBg = ref('') // 头部样式类名，用于控制头部背景
-const mask = ref(null)
+const mask = ref(false)
+let showRouter = ref('-160px') // 隐藏导航
+let btn = ref()
 
-const toggleMenu = () => {
-    var el = document.querySelector('header .right')
-    if (el.style.right == '-160px' || el.style.right == '') {
-        el.style.right = '0'
-        mask.value.style.display = 'block'
+function toggleMenu() {
+    if (showRouter.value == '-160px') {
+        showRouter.value = '0'
+        mask.value = true
+        btn.value.classList.remove('icon-list')
+        btn.value.classList.add('icon-x')
     } else {
-        el.style.right = '-160px'
-        mask.value.style.display = 'none'
+        showRouter.value = '-160px'
+        mask.value = false
+        btn.value.classList.remove('icon-x')
+        btn.value.classList.add('icon-list')
     }
 }
 
-const handleScroll = () => {
+function handleScroll() {
     const scrollTop = window.pageYOffset || document.body.scrollTop // 获取页面滚动的距离（兼容不同浏览器）
     if (scrollTop > 0) {
         headerBg.value = 'header-bg' // 当滚动距离大于0时，添加背景样式
@@ -117,7 +122,7 @@ header {
                 }
             }
 
-            .icon-list {
+            .btn {
                 color: #fff;
                 font-size: 1.8rem;
                 display: none;
@@ -129,7 +134,7 @@ header {
         }
 
         .mask {
-            display: none;
+            display: block;
             position: fixed;
             top: 0;
             left: 0;

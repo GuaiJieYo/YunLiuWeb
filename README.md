@@ -1,5 +1,5 @@
 <div align='center'>
-<img src='./src/imgs/logo.webp' width='128px' height='128px'>
+<a targe='_blank' href='https://yunliucraft.cn'><img src='./src/imgs/logo.webp' width='128px' height='128px'></a>
 <h1>YunLiuCraft开源官网</h1>
 </div>
 
@@ -14,8 +14,37 @@
 
 ps:点击图片或者蓝色的字即可进入对应网站
 
+## 功能
+- [x] 主页介绍
+- [x] 规则/协议页面 Markdown文件渲染
+- [] 反馈页面(正在加紧制作中)
+- [x] 404页面(不是全局404)
+- [ ] 封禁页面(正在编写后端中)
+
+## 部署
+* **安装** [node.js](https://nodejs.org/zh-cn/) **环境**
+
+  > node > 16.16.0  
+  > npm > 8.15.0
+  
+* 然后以 **管理员权限** 运行 `cmd` 终端，并 `cd` 到 项目根目录
+* 在 `终端` 中输入：
+
+```bash
+# 安装依赖
+npm install
+
+# 预览
+npm dev
+
+# 构建
+npm build
+```
+> 构建完成后，静态资源会在 **`dist` 目录** 中生成，可将 **`dist` 文件夹下的文件**上传至服务器，也可使用 `Vercel` 等托管平台一键导入并自动部署
+
 ## 声明
 
-### 一切开发旨在学习，请勿用于非法用途
+**本仓库中的代码注释较少 如有难以理解的语句可以发起issues**  
+**一切开发旨在学习，请勿用于非法用途**
 > 本项目遵循Apache License 2.0开源协议  
 > **网站是部署在vercel上的所以里面的一些关于vercel的东西可以不管:-)**  

@@ -39,7 +39,7 @@ let Docname = 'Group'
 let Txtlength
 
 // 默认使Toast位于右上角
-const Toast = useToast({position: 'top-right'})
+const Toast = useToast({ position: 'top-right',pauseOnHover: false })
 const Mdrender = new markdownIt()
 
 async function renderMarkdown() {
