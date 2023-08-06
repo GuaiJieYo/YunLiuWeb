@@ -5,7 +5,7 @@
     "created": "2023-07-29 21:59:18 +0800",
     "source": "GuaiJie",
     "expires": "forever",
-    "reason": "Banned by an operator."
+    "reason": ""
   },
   {
     "uuid": "73ab86fb-fcbb-4249-9006-7b70e57ac30c",
@@ -13,7 +13,7 @@
     "created": "2023-07-29 22:01:25 +0800",
     "source": "Server",
     "expires": "forever",
-    "reason": "Banned by an operator."
+    "reason": "测试"
   },
   {
     "uuid": "16f3cf28-4840-4aab-92f1-4f982bc4e47d",
@@ -21,7 +21,7 @@
     "created": "2023-07-29 22:02:58 +0800",
     "source": "Server",
     "expires": "forever",
-    "reason": "Banned by an operator."
+    "reason": "测试"
   },
   {
     "uuid": "575291ad-d5d2-40ae-b85f-0d67acc36b8a",
@@ -29,6 +29,6 @@
     "created": "2023-07-29 22:02:37 +0800",
     "source": "???NaN",
     "expires": "forever",
-    "reason": "Banned by an operator."
+    "reason": "测试"
   }
 ]

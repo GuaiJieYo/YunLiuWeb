@@ -3,7 +3,7 @@
     <Features />
     <Team />
     <Join />
-    <BackToTop show=".slide" />
+    <BackToTop />
 </template>
   
 <script setup>

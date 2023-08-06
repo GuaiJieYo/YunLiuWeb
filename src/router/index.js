@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 // 导入组件(动态导入)
 const Home = () => import('../views/main.vue')
 const Ban = () => import('../views/ban.vue')
@@ -51,7 +51,7 @@ const routes = [
 
 // 创建路由实例
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(), // 使用的是历史记录模式 对SEO友善点
   routes
 })
 

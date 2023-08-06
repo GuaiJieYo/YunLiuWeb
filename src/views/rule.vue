@@ -21,7 +21,7 @@
         </div>
         <div class="mdcontent" v-html="Mdcontent"></div>
     </div>
-    <BackToTop show=".banner" />
+    <BackToTop />
 </template>
   
 <script setup>

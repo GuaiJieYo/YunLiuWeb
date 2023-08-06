@@ -8,7 +8,6 @@
 import { ref,onMounted, onUnmounted } from 'vue'
 
 // 设置滚动条滚动到最低的高度的元素
-const props = defineProps(['show'])
 const back2top = ref(null)
 
 function Back2Top() {
@@ -17,10 +16,9 @@ function Back2Top() {
 }
 
 function ShowButton() {
-    const El = document.querySelector(props.show)
     const ScrollTop = window.scrollY || document.body.scrollTop
 
-    if (ScrollTop > (El.offsetTop + El.offsetHeight)/2) {
+    if (ScrollTop > 0) {
         back2top.value.style.right = '0'
     } else {
         back2top.value.style.right = '-150px'
