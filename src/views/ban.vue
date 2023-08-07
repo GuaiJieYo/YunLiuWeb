@@ -1,39 +1,51 @@
 <!-- 本页以后可能会重写 -->
 <template>
-  <BackToTop />
-  <div class="banner">
-    <img src="/imgs/banner/banner2.jpg" alt="banner">
-    <h1>封禁列表</h1>
-    <p>此页数据不一定为最新，请以实际为准</p>
-  </div>
-  <div class="content">
-    <h1>封禁列表</h1>
-    <div class="search">
-      <i @click="Search" class="iconfont icon-search"></i>
-      <input type="text" @input="Inputvalue" v-model="searchInput" @keyup.enter="Search" placeholder="输入名字来搜索吧~">
-      <i @click="clearInput" class="iconfont icon-x"></i>
-    </div>
-    <hr>
-    <li v-if="!IsLoaded" class="iconfont icon-loader"></li>
-    <table ref="tableel" v-if="IsLoaded">
-      <tr class="head">
-        <td>头像</td>
-        <td>ID</td>
-        <td>原因</td>
-        <td>处理日期</td>
-        <td>封禁时长</td>
-        <td>封禁者</td>
-      </tr>
-      <tr v-for="( item, index) in BannedPlayerInfo" :key="index" :id="item.uuid">
-        <td><img :src="`https://minotar.net/helm/${item.uuid}/50`" :title="item.uuid"></td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.reason }}</td>
-        <td>{{ item.created }}</td>
-        <td>{{ item.expires }}</td>
-        <td>{{ item.source == 'Server' ? '控制台' : item.source }}</td>
-      </tr>
-    </table>
-  </div>
+	<BackToTop />
+	<div class="banner">
+		<img src="/imgs/banner/banner2.jpg" alt="banner">
+		<h1>封禁列表</h1>
+		<p>此页数据不一定为最新，请以实际为准</p>
+	</div>
+	<div class="content">
+		<h1>封禁列表</h1>
+		<small>列表可左右滑动</small>
+		<div class="search">
+			<i @click="Search" class="iconfont icon-search"></i>
+			<input @input="e => e.target.value == '' && resetSearch()" type="text" v-model="searchInput"
+				@keyup.enter="Search" placeholder="输入名字来搜索吧~">
+			<i :class="searchInput == '' ? 'show' : ''" @click="resetSearch" class="iconfont icon-x"></i>
+		</div>
+		<hr>
+		<li v-if="!isLoaded" class="iconfont icon-loader"></li>
+		<div class="table">
+			<table ref="tableel" v-if="isLoaded">
+				<tr class="head">
+					<td>头像</td>
+					<td>ID</td>
+					<td>原因</td>
+					<td>处理日期</td>
+					<td>封禁时长</td>
+					<td>封禁者</td>
+				</tr>
+				<tr v-if="isSearched" v-for="(sitem, sindex) in searchList" :key="sindex">
+					<td><img :src="`https://minotar.net/helm/${sitem.uuid}/50`" :title="sitem.uuid"></td>
+					<td>{{ sitem.name }}</td>
+					<td>{{ sitem.reason }}</td>
+					<td>{{ sitem.created }}</td>
+					<td>{{ sitem.expires }}</td>
+					<td>{{ sitem.source == 'Server' ? '控制台' : sitem.source }}</td>
+				</tr>
+				<tr v-if="!isSearched" v-for="( item, index) in BannedPlayerInfo" :key="index" :id="item.uuid">
+					<td><img :src="`https://minotar.net/helm/${item.uuid}/50`" :title="item.uuid"></td>
+					<td>{{ item.name }}</td>
+					<td>{{ item.reason }}</td>
+					<td>{{ item.created }}</td>
+					<td>{{ item.expires }}</td>
+					<td>{{ item.source == 'Server' ? '控制台' : item.source }}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </template>
 
 <script setup>
@@ -41,185 +53,191 @@ import BackToTop from '../components/BackToTop.vue'
 import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toast-notification'
 
-// 默认使Toast位于右上角
+// 使Toast插件位于页面右上角
 const Toast = useToast({ position: 'top-right', pauseOnHover: false })
-let IsLoaded = ref(false)
-// 储存JSON数据
+let isLoaded = ref(false)
+let isSearched = ref(false)
+// 初始化封禁列表数据
 let BannedPlayerInfo = ref([])
-var searchInput = ref('') // 是input的值默认为空
-let tableel = ref() // 获取table dom
+var searchInput = ref('') // 初始化搜索输入为空
+let searchList = ref([])
 
 function Search() {
-  if (IsLoaded.value == false) {
-    Toast.info('数据还未加载完毕，请稍后重试！')
-    return
-  }
-
-  if (searchInput.value == '') {
-    Toast.info('搜索不能为空！')
-    return
-  }
-
-  const object = BannedPlayerInfo.value.find(a => new RegExp(`^${searchInput.value}$`, 'i').test(a.name)) // 获取出名字对应的对象(忽略大小写)
-
-  if (object == undefined) {
-    Toast.info('没有搜索到此玩家，请输入正确的ID！')
-    searchInput.value = ''
-    return
-  }
-
-  const el = tableel.value.querySelectorAll('tr')
-  // 遍历所有元素
-  for (let i = 0; i < el.length; i++) {
-	// 重置元素
-	el[i].style.display = ''
-    if (el[i].id !== object.uuid && el[i].className !== 'head') {
-      // 隐藏元素
-      el[i].style.display = 'none'
-    }
-  }
-}
-
-function clearInput() {
-  searchInput.value = '' // 清空input框
-  const el = tableel.value.querySelectorAll('[style="display: none;"]')
-  // 遍历所有元素
-  for (let i = 0; i < el.length; i++) {
-    // 显示所有的元素
-    el[i].style.display = ''
-  }
-}
-
-// 判断input框是否为空 如果为空则显示被隐藏的元素
-function Inputvalue(e) {
-	if (e.target.value == '') {
-		clearInput()
+	if (!isLoaded.value) {
+		Toast.warning('数据还未加载完毕，请稍后重试！')
+		return
 	}
-} 
+
+	if (!searchInput.value) {
+		Toast.info('搜索框不能为空！')
+		return
+	}
+
+	// 根据输入搜索匹配的结果
+	const result = BannedPlayerInfo.value.filter(a => new RegExp(searchInput.value, 'i').test(a.name))
+
+	if (result.length) {
+		isSearched.value = true
+		searchList.value = result
+	} else {
+		Toast.error('未搜索到内容！请检查内容是否正确！')
+	}
+}
+
+function resetSearch() {
+	// 清空搜索结果
+	searchList.value = []
+	searchInput.value = ''
+	isSearched.value = false
+}
+
+function handleTimes(time) {
+	const t = new Date(time)
+	const year = t.getFullYear()
+	const month = t.getMonth() + 1
+	const day = t.getDate()
+	const hour = t.getHours().toString().padStart(2, '0') // 转换成两位数
+	const minute = t.getMinutes().toString().padStart(2, '0') // 转换成两位数
+	const second = t.getSeconds().toString().padStart(2, '0') // 转换成两位数
+
+	// 返回格式化后的时间
+	return `${year}年${month}月${day}日 ${hour}:${minute}:${second}`
+}
 
 async function getBannedPlayerInfo() {
-  await fetch('banned-players.json')
-    .then(response => response.json())
-    .then(data => {
-      for (let i = 0; i < data.length; i++) {
-        const info = {
-          "uuid": data[i].uuid,
-          "name": data[i].name,
-          "created": handleTimes(data[i].created),
-          "source": data[i].source,
-          "expires": data[i].expires,
-          "reason": data[i].reason
-        }
-        BannedPlayerInfo.value.push(info) // 推送至BannedPlayerInfo
-      }
-      IsLoaded.value = true
-    })
-    .catch(error => {
-      Toast.error('数据获取失败，请检查网络是否连接正常！')
-    })
+	let data = await fetch('banned-players.json')
+	data = await data.json()
 
-  function handleTimes(time) { // 处理时间格式
-    const t = new Date(time)
-    const year = t.getFullYear()
-    const month = t.getMonth() + 1 // 日期默认是从0开始的所以要加1
-    const day = t.getDate()
-    const hour = t.getHours().toString().padStart(2, '0')
-    const minute = t.getMinutes().toString().padStart(2, '0')
-    const second = t.getSeconds().toString().padStart(2, '0') //转换成为两位数
-
-    return `${year}年${month}月${day}日 ${hour}:${minute}:${second}`
-  }
+	// 将数据格式化为需要的结构
+	return data.map(item => ({
+		"uuid": item.uuid,
+		"name": item.name,
+		"created": handleTimes(item.created),
+		"source": item.source,
+		"expires": item.expires,
+		"reason": item.reason
+	}))
 }
 
-onMounted(() => {
-  getBannedPlayerInfo()
-  Toast.warning('警告: 本页面尚未完工,可能会出现未知的问题！')
+onMounted(async () => {
+	try {
+		// 获取封禁数据
+		BannedPlayerInfo.value = await getBannedPlayerInfo()
+		isLoaded.value = true
+	} catch (error) {
+		Toast.error('数据获取失败，请检查网络是否连接正常！')
+	}
+	Toast.warning('警告: 本页面尚未完工,可能会出现未知的问题！')
 })
 </script>
 
 <style lang="less" scoped>
 // banner的样式迁移到base.less了(63行)
 .content {
-  margin: 60px auto;
-  padding: 30px;
-  width: 80%;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+	margin: 60px auto;
+	padding: 30px;
+	width: 80%;
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+		0 17px 50px 0 rgba(0, 0, 0, 0.19);
 
-  h1 {
-    font-size: 3rem;
-  }
+	@media (max-width: 768px) {
+		padding: 15px;
+	}
 
-  .search {
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	h1 {
+		font-size: 3rem;
+	}
 
-    input {
-      outline-style: none;
-      border: none;
-      border-bottom: solid 2px;
-      background-color: transparent;
-      padding: 0 3px;
-      font-size: 1.5rem;
-      width: 300px;
-      transition: all .3s linear;
+	.search {
+		margin: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-      &:focus {
-        border-color: #0366d6;
-      }
+		input {
+			outline-style: none;
+			border: none;
+			border-bottom: solid 2px;
+			background-color: transparent;
+			padding: 0 3px;
+			font-size: 1.5rem;
+			width: 300px;
+			transition: all .3s linear;
 
-      &:hover {
-        border-color: #30a9de;
-      }
-    }
+			@media (max-width: 425px) {
+				width: 100%;
+				font-size: 1.2rem;
+			}
 
-    i {
-      margin: 0 10px;
-      font-size: 2rem;
-      cursor: pointer;
-      transition: all .3s linear;
+			&:focus {
+				border-color: #0366d6;
+			}
 
-      &:hover {
-        color: #30a9de;
-      }
-    }
-  }
+			&:hover {
+				border-color: #30a9de;
+			}
+		}
 
-  hr {
-    margin: 20px 0;
-  }
+		i {
+			margin: 0 10px;
+			font-size: 2rem;
+			cursor: pointer;
+			transition: all .3s linear;
 
-  .icon-loader {
-    margin: 10px;
-    font-size: 5rem;
-    animation: Roate 3s infinite linear;
-  }
+			&.show {
+				transform: translateX(-5px);
+				opacity: 0;
+				pointer-events: none;
+			}
 
-  table {
-    width: 100%;
+			&:hover {
+				color: #30a9de;
+			}
+		}
+	}
 
-    .head {
-      font-size: 2rem;
-    }
+	hr {
+		margin: 20px 0;
+	}
 
-    tr {
-      border: solid 1px #000;
-      margin: 10px;
-      text-align: center;
-      font-size: 1.5rem;
+	.icon-loader {
+		margin: 10px;
+		font-size: 5rem;
+		animation: Roate 3s infinite linear;
+	}
 
-      img {
-        width: 50px;
-        object-fit: cover;
-        border-radius: 5px;
-        box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2),
-          0 5px 8px 0 rgba(0, 0, 0, .14);
-      }
-    }
-  }
+	.table {
+		width: 100%;
+		overflow: scroll;
+
+		table {
+			width: 100%;
+
+			.head {
+				font-size: 2rem;
+			}
+
+			tr {
+				margin: 10px;
+				text-align: center;
+				font-size: 1.5rem;
+
+				td {
+					border: solid 1px;
+					padding: 3px;
+				}
+
+				img {
+					width: 50px;
+					object-fit: cover;
+					border-radius: 5px;
+					box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2),
+						0 5px 8px 0 rgba(0, 0, 0, .14);
+				}
+			}
+		}
+	}
 }
 </style>
