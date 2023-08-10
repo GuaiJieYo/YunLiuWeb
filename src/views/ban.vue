@@ -16,7 +16,7 @@
 			<i :class="searchInput == '' ? 'show' : ''" @click="resetSearch" class="iconfont icon-x"></i>
 		</div>
 		<hr>
-		<li v-if="!isLoaded" class="iconfont icon-loader"></li>
+		<i v-if="!isLoaded" class="iconfont icon-loader"></i>
 		<div class="table">
 			<table ref="tableel" v-if="isLoaded">
 				<tr class="head">
