@@ -225,7 +225,6 @@ onMounted(async () => {
 				font-size: 1.5rem;
 
 				td {
-					border: solid 1px;
 					padding: 3px;
 				}
 
