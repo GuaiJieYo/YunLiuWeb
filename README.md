@@ -12,6 +12,7 @@
 > 使用[markdown-it](https://github.com/markdown-it/markdown-it)作为Rule页面的Markdown渲染器  
 > 使用[VueToastNotification](https://github.com/ankurk91/vue-toast-notification)作为Toast(消息提醒)插件  
 > 使用[minotar.net](https://minotar.net/)获取封禁列表玩家面部图片
+> 使用[NProgress](https://ricostacruz.com/nprogress/)作为加载进度条
 
 ps:点击图片或者超链接即可进入对应网站
 

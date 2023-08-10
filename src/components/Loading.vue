@@ -12,30 +12,16 @@
     </transition>
 </template>
 <script setup>
-import { ref, onBeforeMount, onBeforeUnmount } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
 
 let IsLoaded = ref(true)
-let router = useRouter()
 
 function hiddenLoadingBox() {
     IsLoaded.value = false
 }
 
-router.beforeEach(() => {
-    IsLoaded.value = true
-})
-
-router.afterEach(() => {
-    hiddenLoadingBox()
-})
-
-onBeforeMount(() => {
-    window.addEventListener('load', hiddenLoadingBox)
-})
-
-onBeforeUnmount(() => {
-    window.removeEventListener('load', hiddenLoadingBox)
+onMounted(() => {
+    window.onload = hiddenLoadingBox
 })
 </script>
 <style lang="less" scoped>

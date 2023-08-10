@@ -1,0 +1,64 @@
+@rainbow-color: linear-gradient(45deg, #f10006, #ef5b00, #e59c01, #19ca05, #00cab5, #0264c8, #c303c3);
+
+#nprogress {
+    pointer-events: none;
+
+    .bar {
+        background: @rainbow-color;
+        position: fixed;
+        z-index: 1031;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+    }
+
+    .peg {
+        display: block;
+        position: absolute;
+        right: 0px;
+        width: 100px;
+        height: 100%;
+        opacity: 1.0;
+        transform: rotate(3deg) translate(0px, -4px);
+    }
+
+    .spinner {
+        display: block;
+        position: fixed;
+        z-index: 1031;
+        top: 15px;
+        right: 15px;
+
+        .spinner-icon {
+            width: 18px;
+            height: 18px;
+            box-sizing: border-box;
+            border: solid 3px transparent;
+            border-top-color: #29d;
+            border-left-color: #29d;
+            border-radius: 50%;
+            animation: nprogress-spinner .4s linear infinite;
+        }
+    }
+}
+
+.nprogress-custom-parent {
+    overflow: hidden;
+    position: relative;
+
+    #nprogress .spinner,
+    #nprogress .bar {
+        position: absolute;
+    }
+}
+
+@keyframes nprogress-spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

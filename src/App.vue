@@ -3,14 +3,13 @@
     <NavBar />
   </nav>
   <main>
-    <router-view></router-view>
+    <router-view />
   </main>
   <footer>
     <Foot />
   </footer>
   <Loading />
 </template>
-
 <script setup>
 import NavBar from './components/NavBar.vue'
 import Foot from './components/Foot.vue'

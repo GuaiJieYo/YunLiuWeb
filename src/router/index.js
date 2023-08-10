@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { Progress } from '../utils/progress'
 // 导入组件(动态导入)
-const Home = () => import('../views/main.vue')
+const Home = () => import('../views/root.vue')
 const Ban = () => import('../views/ban.vue')
 const Rule = () => import('../views/rule.vue')
+const FeedBack = () => import('../views/feedback.vue')
 const NotFound = () => import('../views/notfound.vue')
 
 // 路由列表
@@ -34,7 +36,7 @@ const routes = [
   {
     path: '/feedback',
     name: 'feedback',
-    component: Home,
+    component: FeedBack,
     meta: {
       title: '反馈'
     }
@@ -56,9 +58,15 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  Progress.start() // 启用加载条
   window.document.title = `${to.meta.title} - YunLiuCraft`
   scrollTo({ top: 0, behavior: 'smooth' }) // 自动回滚到最顶部
   next()
+})
+
+router.afterEach(()=>{
+  // 关闭加载条
+  Progress.close()
 })
 
 export default router
