@@ -62,9 +62,9 @@ onUnmounted(() => {
 
 const navList = [
     { title: '首页', link: '/', icon: 'icon-index' },
-    { title: '封禁列表', link: '/ban', icon: 'icon-ban' },
     { title: '条约', link: '/rule', icon: 'icon-rule' },
-    { title: '反馈', link: '/feedback', icon: 'icon-feedback' }
+    { title: '反馈', link: '/feedback', icon: 'icon-feedback' },
+    { title: '封禁列表', link: '/ban', icon: 'icon-ban' }
 ]
 </script>
 
@@ -152,6 +152,7 @@ header {
                 top: 80px;
                 right: -160px;
                 width: fit-content;
+                align-items: end;
                 flex-direction: column;
                 transition: all .3s;
                 background: rgba(0, 0, 0, 0.5);
@@ -159,11 +160,13 @@ header {
                     0 2px 10px 0 rgba(0, 0, 0, 0.12);
             }
 
-            a {
+            div {
                 @media (max-width: 768px) {
-                    margin-bottom: 10px;
+                    margin: 5px 0;
                 }
+            }
 
+            a {
                 color: #fff;
                 margin: 0 10px;
                 font-size: 1.6rem;

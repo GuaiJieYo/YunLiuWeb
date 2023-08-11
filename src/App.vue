@@ -14,4 +14,5 @@
 import NavBar from './components/NavBar.vue'
 import Foot from './components/Foot.vue'
 import Loading from './components/Loading.vue'
+import './plugins/surprise.js'
 </script>
