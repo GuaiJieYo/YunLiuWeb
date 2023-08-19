@@ -30,7 +30,7 @@ window.addEventListener('keydown', handleKeyDown)
 const log = 
 `系统: 已加载(魂斗罗秘籍)
 这是什么感觉怪怪的?
-试试一次按下 上上下下左右左右BA 这几个键吧
+试试依次按下 上上下下左右左右BA 这几个键吧
 `
 
 console.log(log)

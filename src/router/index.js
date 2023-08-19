@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { Progress } from '../plugins/progress'
+import Progress from '../plugins/progress'
 // 导入组件(动态导入)
 const Home = () => import('../views/root.vue')
 const Ban = () => import('../views/ban.vue')

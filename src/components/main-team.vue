@@ -6,7 +6,7 @@
         <p @click="SkipList" class="skip">点我跳过此列表</p>
         <ul>
             <li v-for="(item, index) in TeamList" :key="index">
-                <img :src="item.skin">
+                <img v-lazy="item.skin">
                 <h2>{{ item.id }}</h2>
                 <p>{{ item.info }}</p>
             </li>

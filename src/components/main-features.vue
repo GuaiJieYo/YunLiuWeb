@@ -8,7 +8,7 @@
             </p>
         </div>
         <div class="right">
-            <img src="/imgs/banner/banner1.jpg" alt="Welcome">
+            <img v-lazy="'/imgs/banner/banner1.jpg'" alt="Welcome">
         </div>
     </div>
     <div class="features">
@@ -27,7 +27,7 @@
         <ul>
             <li v-for="(item, index) in FeatureList2" :key="index">
                 <h2>{{ item.title }}</h2>
-                <img :src="item.img" :alt="item.title">
+                <img v-lazy="item.img" :alt="item.title">
                 <p>{{ item.info }}</p>
             </li>
         </ul>

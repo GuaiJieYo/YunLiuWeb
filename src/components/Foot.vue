@@ -17,7 +17,7 @@
         <div class="right">
             <a target="_blank" :title="item.title" v-for="(item, index) in List" :href="item.link" :key="item">
                 <i class="iconfont" :class="item.icon"></i>
-                <img :src="`/imgs/qrcode/${item.title}.png`" :alt="item.title">
+                <img v-lazy="`/imgs/qrcode/${item.title}.png`" :alt="item.title">
             </a>
         </div>
     </div>

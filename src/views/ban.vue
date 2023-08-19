@@ -36,7 +36,7 @@
 					<td>{{ sitem.source == 'Server' ? '控制台' : sitem.source }}</td>
 				</tr>
 				<tr v-if="!isSearched" v-for="( item, index) in BannedPlayerInfo" :key="index" :id="item.uuid">
-					<td><img :src="`https://minotar.net/helm/${item.uuid}/50`" :title="item.uuid"></td>
+					<td><img v-lazy="`https://minotar.net/helm/${item.uuid}/50`" :title="item.uuid"></td>
 					<td>{{ item.name }}</td>
 					<td>{{ item.reason }}</td>
 					<td>{{ item.created }}</td>

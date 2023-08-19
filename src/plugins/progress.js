@@ -9,7 +9,7 @@ NProgress.configure({
     minimum: 0.3 // 初始化时的最小百分比
 })
 
-export const Progress = {
+let Progress = {
     start: ()=>{// 打开进度条
         NProgress.start()
     },
@@ -17,3 +17,5 @@ export const Progress = {
         NProgress.done()
     }
 }
+
+export default Progress
