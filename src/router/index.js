@@ -5,6 +5,7 @@ const Home = () => import('../views/root.vue')
 const Ban = () => import('../views/ban.vue')
 const Rule = () => import('../views/rule.vue')
 const FeedBack = () => import('../views/feedback.vue')
+const Surprise = () => import('../views/surprise.vue')
 const NotFound = () => import('../views/notfound.vue')
 
 // 路由列表
@@ -42,6 +43,14 @@ const routes = [
     }
   },
   {
+    path: '/surprise',
+    name: 'surprise',
+    component: Surprise,
+    meta: {
+      title: '惊喜'
+    }
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: NotFound,
@@ -64,7 +73,7 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-router.afterEach(()=>{
+router.afterEach(() => {
   // 关闭加载条
   Progress.close()
 })

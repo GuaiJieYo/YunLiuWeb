@@ -44,7 +44,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 99999999;
+    z-index: 999;
     background-color: @background-color;
 }
 

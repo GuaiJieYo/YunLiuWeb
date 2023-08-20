@@ -12,7 +12,7 @@
                     <p>{{ item.info }}</p>
                 </div>
             </li>
-            <li class="none" v-if="TeamList.length % 3 !== 0"></li>
+            <li v-if="TeamList.length % 3 !== 0" class="none"></li>
         </ul>
     </div>
 </template>
