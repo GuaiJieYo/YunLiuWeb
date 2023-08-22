@@ -148,8 +148,11 @@ function SkipList(e) {
                 width: 75px;
                 height: 75px;
                 border-radius: 5px;
-                box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2),
-                    0 5px 8px 0 rgba(0, 0, 0, .14);
+
+                &[lazy="loaded"] {
+                    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2),
+                        0 5px 8px 0 rgba(0, 0, 0, .14);
+                }
             }
 
             div {

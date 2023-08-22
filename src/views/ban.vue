@@ -10,10 +10,10 @@
 		<h1>封禁列表</h1>
 		<small>列表可左右滑动</small>
 		<div class="search">
-			<i @click="Search" class="iconfont icon-search"></i>
+			<i :class="searchInput == '' ? 'show' : ''" @click="resetSearch" class="iconfont icon-x"></i>
 			<input @input="e => e.target.value == '' && resetSearch()" type="text" v-model="searchInput"
 				@keyup.enter="Search" placeholder="输入名字来搜索吧~">
-			<i :class="searchInput == '' ? 'show' : ''" @click="resetSearch" class="iconfont icon-x"></i>
+			<i @click="Search" class="iconfont icon-search"></i>
 		</div>
 		<hr>
 		<i v-if="!isLoaded" class="iconfont icon-loader"></i>
@@ -232,8 +232,11 @@ onMounted(async () => {
 					width: 50px;
 					object-fit: cover;
 					border-radius: 5px;
-					box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2),
-						0 5px 8px 0 rgba(0, 0, 0, .14);
+
+					&[lazy="loaded"] {
+						box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2),
+							0 5px 8px 0 rgba(0, 0, 0, .14);
+					}
 				}
 			}
 		}

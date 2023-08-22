@@ -24,6 +24,13 @@ ps:点击图片或者超链接即可进入对应网站
 - [x] 404页面
 - [ ] 反馈页面(正在加紧制作中)
 
+## 指令解析 (基于npm run)
+1. build : 构建
+2. dev : 开发预览
+3. preview : 构建预览(需要先使用build构建完成后才能使用构建预览)
+4. ver : 将版本号写入环境变量中(版本号就是commit id的前七位)
+5. clean : 删除dist文件夹
+
 ## 部署
 * **安装** [node.js](https://nodejs.org/zh-cn/) **环境**
 
@@ -38,10 +45,10 @@ ps:点击图片或者超链接即可进入对应网站
 npm install
 
 # 预览(yarn dev)
-npm dev
+npm run dev
 
 # 构建(yarn build)
-npm build
+npm run build
 ```
 > 构建完成后，静态资源会在 **`dist` 目录** 中生成，可将 **`dist` 文件夹下的文件**上传至服务器，也可使用 `Vercel` 等托管平台一键导入并自动部署
 

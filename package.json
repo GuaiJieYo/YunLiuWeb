@@ -4,9 +4,11 @@
   "version": "1.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "npm run ver && vite",
+    "build": "npm run ver && vite build",
+    "preview": "vite preview",
+    "ver": "node ./tools/version.cjs",
+    "clean": "node ./tools/clean.cjs"
   },
   "dependencies": {
     "less": "^4.1.3",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
+    "git-rev-sync": "^3.0.2",
     "vite": "^4.3.9"
   }
 }

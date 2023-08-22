@@ -10,8 +10,9 @@
                 愿你的创造力在 YunLiuCraft 中无限闪耀！
             </div>
             <div class="copy">
-                Copyright &copy; 2022 - {{ new Date().getFullYear() }} YunLiuCraft<br>
-                网页代码由 <a href="https://www.guaijie.top">GuaiJie</a> 编写(开源),YunLiuCraft 管理组维护
+                Copyright &copy; 2022 - {{ new Date().getFullYear() }} YunLiuCraft <br>
+                网页版本 <a :href="$version.url" :title="'更新内容:' + $version.message">{{ $version.sid }}</a> , 已开源至 <a
+                    href="https://github.com/GuaiJieYo/YunLiuWeb"><i class="iconfont icon-github"></i> Github</a>
             </div>
         </div>
         <div class="right">
@@ -69,8 +70,13 @@ const List = [
             font-size: 1.3rem;
 
             a {
-                color: #fff;
-                border-bottom: dotted 1px;
+                color: #f9f9f9;
+                font-weight: bold;
+                transition: color .3s;
+
+                &:hover {
+                    color: #30a9de;
+                }
             }
         }
     }
